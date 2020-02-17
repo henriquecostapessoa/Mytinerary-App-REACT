@@ -1,0 +1,21 @@
+.container {
+    text-align: center;
+}
+
+.logoimage {
+    margin-bottom: 25px;
+}
+
+.introduction {
+    margin-bottom: 35px;
+}
+
+.startBrowsing {
+    margin-bottom: 35px;
+}
+
+.loginSignin {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 25px;
+}
