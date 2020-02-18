@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Image from 'react-bootstrap/Image'
+import {Image} from 'react-bootstrap'
 import {Link} from "react-router-dom"
 
 export default class Landingpage extends Component {
@@ -8,10 +8,10 @@ export default class Landingpage extends Component {
             <div>
                 <div className="container">
                     <div className="logoimage">
-                    <Image className="bg-image" src="/images/MYtineraryLogo.png" style = {{width: 350,height: 150}}/>
+                    <Image className="bg-image" src="/images/MYtineraryLogo.png" style = {{width: 300,height: 125}}/>
                     </div>
                     <div className="introduction">
-                    <p>Find Your perfect trip, designed by insiders who know and love their cities. </p>
+                    <p>Find your perfect trip, designed by insiders who know and love their cities. </p>
                     </div>
                     <div className="startBrowsing">
                     <h3>Start Browsing</h3>
