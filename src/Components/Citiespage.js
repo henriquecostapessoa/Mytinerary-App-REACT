@@ -29,6 +29,7 @@ export default class Citiespage extends Component {
         onChange = (e) => {
             this.setState({mySearch: e.target.value})
          }
+         
         
     render() {
         const cities = this.state.cities.filter(city => {
