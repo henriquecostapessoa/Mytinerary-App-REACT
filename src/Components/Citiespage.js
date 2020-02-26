@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import {Form, FormControl, Image} from 'react-bootstrap'
+import { connect } from 'react-redux'
+import { fetchCities } from '../store/actions/cityActions';
 
-export default class Citiespage extends Component {
+class Citiespage extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -14,25 +16,17 @@ export default class Citiespage extends Component {
         };
       }
 
-    componentDidMount() {
-        fetch('http://localhost:5000/cities/all')
-        .then(response => response.json())
-        .then(response => {
-            this.setState({
-                cities: response
-                
-              })
-             
-            })
-            .catch(err=>console.log(err))
+        componentWillMount() {
+            this.props.fetchCities()
         }
+
         onChange = (e) => {
             this.setState({mySearch: e.target.value})
          }
          
         
     render() {
-        const cities = this.state.cities.filter(city => {
+        const cities = this.props.cities.filter(city => {
             return city.name.toLowerCase().includes(this.state.mySearch.toLowerCase()) || city.country.toLowerCase().includes(this.state.mySearch.toLowerCase())})
             .map((city, index)=>{
         console.log(city.image)
@@ -64,3 +58,9 @@ export default class Citiespage extends Component {
         )
     }
 }
+
+const mapStateToProps = state => ({
+    cities: state.cities.items
+})
+
+export default connect(mapStateToProps, {fetchCities})(Citiespage)
