@@ -8,7 +8,7 @@ import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import rootReducer from "./store/reducers/rootReducer";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+/* ReactDOM.render(<App />, document.getElementById('root')); */
 
 const store = createStore(
     rootReducer,

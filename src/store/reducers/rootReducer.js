@@ -1,4 +1,9 @@
 import { combineReducers } from "redux";
 import citiesReducer from "./citiesRuducer";
-const rootReducer = combineReducers({cities: citiesReducer});
+import itineraryReducer from "./itineraryReducer";
+
+const rootReducer = combineReducers({cities: citiesReducer, itineraries: itineraryReducer});
+
 export default rootReducer;
+
+

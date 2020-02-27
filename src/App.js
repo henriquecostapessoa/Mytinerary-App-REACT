@@ -6,9 +6,11 @@ import Landingpage from './Components/Landingpage';
 import Loginpage from './Components/Loginpage';
 import Signinpage from './Components/Signinpage';
 import Citiespage from './Components/Citiespage';
+import Itinerarypage from './Components/Itinerarypage';
 
 function App() {
   return (
+    
     <BrowserRouter>
       <div className="App">
         <Switch>
@@ -16,9 +18,11 @@ function App() {
           <Route path="/loginpage" component={Loginpage}/>
           <Route path="/signinpage" component={Signinpage}/>
           <Route path="/citiespage" component={Citiespage}/>
+          <Route path="/itinerary" component={Itinerarypage}/>
         </Switch>
       </div>
     </BrowserRouter>
+    
   );
 }
 
