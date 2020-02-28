@@ -28,24 +28,32 @@ class Citiespage extends Component {
         
     render() {
         const cities = this.props.cities.filter(city => {
-            return city.name.toLowerCase().includes(this.state.mySearch.toLowerCase()) || city.country.toLowerCase().includes(this.state.mySearch.toLowerCase())})
+            return city.name.toLowerCase().startsWith(this.state.mySearch.toLowerCase())})
             .map((city, index)=>{
-        console.log(city.image)
+        
             return (
                 <div key={index}>
-                   <div className="card text-center"> 
-                  <Card>
-                  <Link id="Itinerary" to={{
+                  <Card id="allCard" className="bg-dark text-white" >
+                  <Card.Img src={city.image} alt="Card image" style={{width: 358, height: 225}} />
+                  <Card.ImgOverlay>
+                    <Card.Title id="cityName">
+                    <Link id="Itinerary" to={{
                       pathname:"/itinerary", 
                       state: {
                         city: city
                       }}}> 
-                    <Card.Body>{city.name}</Card.Body>
+                    
+                    <p id="cityColor"> {city.name}</p> 
+    
                   </Link>
-                  </Card>  
-                  </div>
+                    </Card.Title>
+                
+                  </Card.ImgOverlay>
+                </Card>
+                   
                 </div>
             )
+            
     
         })
 

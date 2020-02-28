@@ -45,8 +45,8 @@ export default class Landingpage extends Component {
                 <Overlay target={target.current} show={show} placement="bottom">
                   {props => (
                     <Tooltip id="overlay-example" {...props}>
-                      <Link id="login" to="/loginpage">Login in</Link><br></br>
-                      <Link id="signin" to="/signinpage">Sign in</Link>
+                      <Link id="registration" to="/registrationpage">Create Account</Link><br></br>
+                      <Link id="login" to="/loginpage">Login in</Link>
                     </Tooltip>
                   )}
                 </Overlay>
@@ -64,9 +64,9 @@ export default class Landingpage extends Component {
                     <Example />
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="mr-auto">
+                        <Nav>
                         
-                            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+                            <NavDropdown.Item className="justify-content-end" style={{ width: "100%" }} href="#action/3.1">Action</NavDropdown.Item>
                             <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
                             <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
                             <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>

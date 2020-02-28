@@ -34,3 +34,35 @@
     flex-wrap: wrap;
     justify-content: space-around;
   }
+
+  #allCard {
+    margin-top: 10px;
+  }
+
+  #cityName {
+      text-align: center;
+      padding: 70px 0;
+  }
+
+  #cityColor {
+      color: white;
+      font-size: 30px;
+  }
+
+  .flex-container {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  #alignProfile {
+      text-align: center;
+  }
+
+  #organizeRating {
+      display: flex;
+      justify-content: space-between;
+  }
+
+  Nav {
+      text-align: end;
+  }

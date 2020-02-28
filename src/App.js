@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import {Provider} from 'react-redux';
 import Landingpage from './Components/Landingpage';
 import Loginpage from './Components/Loginpage';
-import Signinpage from './Components/Signinpage';
+import Registrationpage from './Components/Registrationpage';
 import Citiespage from './Components/Citiespage';
 import Itinerarypage from './Components/Itinerarypage';
 
@@ -16,7 +16,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Landingpage}/>
           <Route path="/loginpage" component={Loginpage}/>
-          <Route path="/signinpage" component={Signinpage}/>
+          <Route path="/registrationpage" component={Registrationpage}/>
           <Route path="/citiespage" component={Citiespage}/>
           <Route path="/itinerary" component={Itinerarypage}/>
         </Switch>
