@@ -3,6 +3,7 @@ import { fetchItineraries } from '../store/actions/itineraryActions';
 import { connect } from 'react-redux'
 import { Link } from "react-router-dom"
 import { Button, Accordion, Image, Card } from 'react-bootstrap'
+import Activitiespage from './Activitiespage';
 
 
 class Itinerarypage extends Component {
@@ -46,6 +47,7 @@ class Itinerarypage extends Component {
       </div>
       <p style={hStyle}>{itinerary.hashtags}</p>
       </div>
+      <Activitiespage />
       </div>
       <Accordion defaultActiveKey="0">
       <Card>
@@ -55,7 +57,9 @@ class Itinerarypage extends Component {
           </Accordion.Toggle>
         </Card.Header>
         <Accordion.Collapse eventKey="0">
-          <Card.Body>Hello! I'm the body</Card.Body>
+          <Card.Body>
+            <Activitiespage />
+          </Card.Body>
         </Accordion.Collapse>
       </Card>
       </Accordion>
