@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { fetchActivities } from '../store/actions/activitiesActions';
 import { connect } from 'react-redux'
-import {Navbar, Nav, NavDropdown, Overlay, Tooltip, Image, Carousel} from 'react-bootstrap'
+import {Navbar, Nav, NavDropdown, Overlay, Tooltip, Image, Carousel, Card} from 'react-bootstrap'
 
 class Activitiespage extends Component {
     constructor(props) {
@@ -13,46 +13,82 @@ class Activitiespage extends Component {
         };
       }
 
-    componentDidMount() {
-        /* this.props.fetchActivities(this.props.location.state.itinerary._id) */
+    componentWillMount() {
+        this.props.fetchActivities(this.props.myid)
     }
 
+
+
     render() {
-        
-        const pictures = this.state.activities.map(activity => {
-            return (
-                <div className="carousel">
-                <Carousel>
+        let myCar = null;
+if (this.props.activities.length > 0) {
+myCar = (
+            <Carousel>
                 <Carousel.Item>
                     <div style={{display: 'flex', flexWrap: 'wrap'}}>
-                        <Image
-                        className="d-block w-50"
-                        src={activity.picture[0]}
-                        alt="Third slide"
-                        thumbnail
-                        style={{width: 150, height: 125}} 
-                        />
-                        <Image
-                        className="d-block w-50"
-                        src={activity.picture[1]}                            
-                        alt="Third slide"
-                        thumbnail
-                        style={{width: 150, height: 125}}  
-                        />
+                    <Card id="allCard" className="bg-dark text-white" >
+                    <Card.Img src={this.props.activities[0].picture} alt="Card image" style={{width: 358, height: 225}} />
+                    <Card.ImgOverlay>
+                        <Card.Title id="cityName">
+                        
+                        <p id="cityColor"> {this.props.activities[0].title}</p> 
+                        </Card.Title>
                     
+                    </Card.ImgOverlay>
+                    </Card>
+                    </div>
+                </Carousel.Item>
+                <Carousel.Item>
+                    <div style={{display: 'flex', flexWrap: 'wrap'}}>
+                    <Card id="allCard" className="bg-dark text-white" >
+                    <Card.Img src={this.props.activities[1].picture} alt="Card image" style={{width: 358, height: 225}} />
+                    <Card.ImgOverlay>
+                        <Card.Title id="cityName">
+                        
+                        <p id="cityColor"> {this.props.activities[1].title}</p> 
+                        </Card.Title>
+                    
+                    </Card.ImgOverlay>
+                    </Card>
+                    </div>
+                </Carousel.Item>
+                <Carousel.Item>
+                    <div style={{display: 'flex', flexWrap: 'wrap'}}>
+                    <Card id="allCard" className="bg-dark text-white" >
+                    <Card.Img src={this.props.activities[2].picture} alt="Card image" style={{width: 358, height: 225}} />
+                    <Card.ImgOverlay>
+                        <Card.Title id="cityName">
+                        
+                        <p id="cityColor"> {this.props.activities[2].title}</p> 
+                        </Card.Title>
+                    
+                    </Card.ImgOverlay>
+                    </Card>
+                    </div>
+                </Carousel.Item>
+                <Carousel.Item>
+                    <div style={{display: 'flex', flexWrap: 'wrap'}}>
+                    <Card id="allCard" className="bg-dark text-white" >
+                    <Card.Img src={this.props.activities[3].picture} alt="Card image" style={{width: 358, height: 225}} />
+                    <Card.ImgOverlay>
+                        <Card.Title id="cityName">
+                        
+                        <p id="cityColor"> {this.props.activities[3].title}</p> 
+                        </Card.Title>
+                    
+                    </Card.ImgOverlay>
+                    </Card>
                     </div>
                 </Carousel.Item>
                 </Carousel>
-                </div> 
-            )
-        })
-
-
+)    
+}
 
         return (
             <div>
-              <h1>activities</h1>
-              {/*   {pictures} */}
+              <div className="carousel">
+                {myCar}
+                </div> 
             </div>
 
         )

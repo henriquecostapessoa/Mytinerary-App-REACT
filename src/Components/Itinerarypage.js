@@ -11,8 +11,8 @@ class Itinerarypage extends Component {
         super(props);
         this.state = {
           datain: false,  
-          itineraries: []
-          
+          itineraries: [],
+          id: ""
         };
       }
 
@@ -20,9 +20,13 @@ class Itinerarypage extends Component {
         this.props.fetchItineraries(this.props.location.state.city._id)
     }
 
-   
+    handleClick(myId) {
+      this.setState({id: myId})
+      
+    }
 
     render() {
+      console.log(this.state.id)
       const pStyle = {
         margin: 10
       }  
@@ -30,6 +34,7 @@ class Itinerarypage extends Component {
         marginLeft: 10
       }
       const itineraries = this.props.itineraries.map(itinerary => {
+        
       return (
       <Card>
       <Card.Body>
@@ -47,18 +52,17 @@ class Itinerarypage extends Component {
       </div>
       <p style={hStyle}>{itinerary.hashtags}</p>
       </div>
-      <Activitiespage />
       </div>
       <Accordion defaultActiveKey="0">
       <Card>
         <Card.Header>
-          <Accordion.Toggle as={Button} variant="link" eventKey="0">
+          <Accordion.Toggle as={Button} onClick={() => this.handleClick(itinerary._id)} variant="link"  eventKey="1">
             View All
           </Accordion.Toggle>
         </Card.Header>
-        <Accordion.Collapse eventKey="0">
+        <Accordion.Collapse eventKey="1">
           <Card.Body>
-            <Activitiespage />
+            {this.state.id === itinerary._id && <Activitiespage myid={itinerary._id}/>}
           </Card.Body>
         </Accordion.Collapse>
       </Card>
