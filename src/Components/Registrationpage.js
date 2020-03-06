@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
 import { fetchRegistrations } from '../store/actions/userActions';
 import { connect } from 'react-redux'
+import Navbarpage from './Navbarpage';
 
 class Registrationpage extends Component {
     constructor(props) {
@@ -47,6 +48,7 @@ class Registrationpage extends Component {
     
         return (
             <div>
+                <Navbarpage />
                 <MDBContainer>
                     <MDBRow>
                         <MDBCol md="6">

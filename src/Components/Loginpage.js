@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 import { Button, Form } from 'react-bootstrap'
 import { MDBContainer, MDBRow, MDBCol, MDBBtn } from 'mdbreact';
+import GoogleButton from 'react-google-button'
+import Navbarpage from './Navbarpage';
 
 export default class Loginpage extends Component {
     render() {
         return (
             <div>
+                <Navbarpage />
                 <MDBContainer>
                 <MDBRow>
                     <MDBCol md="6">
@@ -21,6 +24,10 @@ export default class Loginpage extends Component {
                         </label>
                         <input type="password" id="defaultFormLoginPasswordEx" className="form-control" />
                         <div className="text-center mt-4">
+                        <GoogleButton 
+                        type="light" // can also be written as disabled={true} for clarity
+                        onClick={() => { window.location.href="http://localhost:5000/auth/google" }}
+                        />    
                         <MDBBtn color="indigo" type="submit">Login</MDBBtn>
                         </div>
                     </form>

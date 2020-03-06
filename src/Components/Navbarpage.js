@@ -1,5 +1,5 @@
 import React, { Component, useRef, useState } from 'react';
-import {Navbar, Nav, NavDropdown, Overlay, Tooltip, Image, Carousel} from 'react-bootstrap';
+import {Navbar, Nav, NavDropdown, Overlay, Tooltip, Image, Carousel, Button} from 'react-bootstrap';
 import {Link} from "react-router-dom";
 
 export default class Navbarpage extends Component {
@@ -17,7 +17,8 @@ export default class Navbarpage extends Component {
                   {props => (
                     <Tooltip id="overlay-example" {...props}>
                       <Link id="registration" to="/registrationpage">Create Account</Link><br></br>
-                      <Link id="login" to="/loginpage">Login in</Link>
+                      <Link id="login" to="/loginpage">Login in</Link><br></br>
+                      <Link onClick={() => { window.location.href="http://localhost:5000/auth/logout" }}>Logout</Link>
                     </Tooltip>
                   )}
                 </Overlay>
