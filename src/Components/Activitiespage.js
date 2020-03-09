@@ -88,6 +88,15 @@ myCar = (
             <div>
               <div className="carousel">
                 {myCar}
+                </div><br></br>
+                <div>
+                <form onSubmit={this.handleSubmit}>
+                    <label>
+                    Comments
+                    </label><br></br>
+                    <input type="text" placeholder="Your comment..." ref={(input) => this.input = input} />
+                    <input type="submit" value="Submit" />
+                </form>
                 </div> 
             </div>
 
