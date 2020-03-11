@@ -2,12 +2,14 @@ import { FETCH_REGISTRATIONS, NEW_REGISTRATION } from '../actions/types';
 
 const initialState = {
     items: [],
-    item: {}
+    item: {},
 }
 
 export default function (state = initialState, action) {
     switch (action.type) {
         case FETCH_REGISTRATIONS:
+            
+            localStorage.setItem('token', action.payload.token); 
             return {
                 ...state,
                 items: action.payload
