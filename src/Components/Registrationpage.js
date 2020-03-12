@@ -53,7 +53,7 @@ class Registrationpage extends Component {
                     <MDBRow>
                         <MDBCol md="6">
                         <form onSubmit={this.handleClick}>
-                            <p className="h5 text-center mb-4">Sign up</p>
+                            <p className="h4 text-center mb-4">Sign up</p>
                             <div className="grey-text">
                             <MDBInput name="username" value={this.state.username} onChange={this.onChange} label="Your name" icon="user" group type="text" validate error="wrong"
                                 success="right" />

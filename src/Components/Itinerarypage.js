@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { fetchItineraries } from '../store/actions/itineraryActions';
 import { connect } from 'react-redux'
 import { Link } from "react-router-dom"
+import Navbarpage from './Navbarpage';
+import { MDBCloseIcon } from "mdbreact"
 import { Button, Accordion, Image, Card } from 'react-bootstrap'
 import Activitiespage from './Activitiespage';
 
@@ -57,7 +59,7 @@ class Itinerarypage extends Component {
       <Card>
         <Card.Header>
           <Accordion.Toggle as={Button} onClick={() => this.handleClick(itinerary._id)} variant="link"  eventKey="1">
-            View All
+            Activities
           </Accordion.Toggle>
         </Card.Header>
         <Accordion.Collapse eventKey="1">
@@ -66,6 +68,9 @@ class Itinerarypage extends Component {
           </Card.Body>
         </Accordion.Collapse>
       </Card>
+      <Accordion.Toggle as={Button} onClick={() => this.handleClick(itinerary._id)} variant="link"  eventKey="1">
+            Close
+      </Accordion.Toggle>
       </Accordion>
       </Card.Body>
       </Card>
@@ -76,7 +81,9 @@ class Itinerarypage extends Component {
       const city = this.props.location.state.city
         
         return (
-            <div>.
+        
+            <div>
+              
               <Card className="bg-dark text-white" >
                   <Card.Img src={city.image} alt="Card image" style={{width: 358, height: 225}} />
                   <Card.ImgOverlay>

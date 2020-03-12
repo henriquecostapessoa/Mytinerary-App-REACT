@@ -23,11 +23,13 @@ export default class Loginpage extends Component {
                         Your password
                         </label>
                         <input type="password" id="defaultFormLoginPasswordEx" className="form-control" />
-                        <div className="text-center mt-4">
+                        <div class="g-signin2">
                         <GoogleButton 
                         type="light" // can also be written as disabled={true} for clarity
                         onClick={() => { window.location.href="http://localhost:5000/auth/google" }}
-                        />    
+                        />   
+                        </div>
+                        <div className="text-center mt-4"> 
                         <MDBBtn color="indigo" type="submit">Login</MDBBtn>
                         </div>
                     </form>

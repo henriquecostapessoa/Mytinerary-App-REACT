@@ -36,10 +36,10 @@ export default class Navbarpage extends Component {
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav>
                         
-                            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                            <NavDropdown.Item href="#action/3.1"><Link id="registration" to="/registrationpage">Create Account</Link></NavDropdown.Item>
+                            <NavDropdown.Item href="#action/3.2"><Link id="login" to="/loginpage">Login in</Link></NavDropdown.Item>
+                            <NavDropdown.Item href="#action/3.3"><Link id="cities" to="/citiespage">Cities</Link></NavDropdown.Item>
+                            <NavDropdown.Item href="#action/3.3"><Link id="home" to="/">Home</Link></NavDropdown.Item>
                         
                         </Nav>
                     </Navbar.Collapse>
