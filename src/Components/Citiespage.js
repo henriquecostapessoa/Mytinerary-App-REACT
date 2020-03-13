@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { fetchCities } from '../store/actions/cityActions';
 import {Link} from "react-router-dom"
 import Navbarpage from './Navbarpage';
+import queryString from "query-string";
 
 class Citiespage extends Component {
     constructor(props) {
@@ -17,6 +18,14 @@ class Citiespage extends Component {
         
         };
       }
+
+      componentDidMount() {
+        var query = queryString.parse(this.props.location.search);
+        if (query.token) {
+          window.localStorage.setItem("jwt", query.token);
+          this.props.history.push("/");
+       }
+    }
 
         componentWillMount() {
             this.props.fetchCities()

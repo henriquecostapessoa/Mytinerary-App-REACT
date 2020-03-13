@@ -96,6 +96,7 @@ myCar = (
                     </label><br></br>
                     <input type="text" placeholder="Your comment..." ref={(input) => this.input = input} />
                     <input type="submit" value="Submit" />
+                    
                 </form>
                 </div> 
             </div>

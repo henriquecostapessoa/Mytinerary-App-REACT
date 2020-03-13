@@ -10,3 +10,5 @@ export const FETCH_LOGINS = 'FETCH_LOGINS';
 export const NEW_LOGIN = 'NEW_LOGIN';
 export const FETCH_LOGOUTS = 'FETCH_LOGOUTS';
 export const NEW_LOGOUT = 'NEW_LOGOUT';
+export const FETCH_GOOGLELOGINS = 'FETCH_GOOGLELOGINS';
+export const NEW_GOOGLELOGIN = 'NEW_GOOGLELOGIN';
