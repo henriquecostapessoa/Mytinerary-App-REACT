@@ -75,3 +75,8 @@
     margin: 0 auto;
     margin-top: 25px;
   }
+
+  .btn-primary {
+    background-color: #23aa4e;
+    border-color: #177d37;
+  }

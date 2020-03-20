@@ -6,6 +6,7 @@ import Navbarpage from './Navbarpage';
 import { MDBCloseIcon } from "mdbreact"
 import { Button, Accordion, Image, Card } from 'react-bootstrap'
 import Activitiespage from './Activitiespage';
+import LikeButton from './likeButton';
 
 
 class Itinerarypage extends Component {
@@ -53,6 +54,9 @@ class Itinerarypage extends Component {
       <p style={pStyle}>{itinerary.price}</p>
       </div>
       <p style={hStyle}>{itinerary.hashtags}</p>
+      <div>
+      <LikeButton />
+      </div>
       </div>
       </div>
       <Accordion defaultActiveKey="0">
