@@ -7,6 +7,8 @@ import { MDBCloseIcon } from "mdbreact"
 import { Button, Accordion, Image, Card } from 'react-bootstrap'
 import Activitiespage from './Activitiespage';
 import LikeButton from './likeButton';
+import Axios from 'axios';
+import PropTypes from "prop-types"
 
 
 class Itinerarypage extends Component {
@@ -15,9 +17,11 @@ class Itinerarypage extends Component {
         this.state = {
           datain: false,  
           itineraries: [],
-          id: ""
+          id: "",
+          screams: null,
         };
       }
+
 
       componentDidMount() {
         this.props.fetchItineraries(this.props.location.state.city._id)
@@ -28,6 +32,7 @@ class Itinerarypage extends Component {
       
     }
 
+    
     render() {
       console.log(this.state.id)
       const pStyle = {
@@ -36,8 +41,10 @@ class Itinerarypage extends Component {
       const hStyle = {
         marginLeft: 10
       }
+
+
       const itineraries = this.props.itineraries.map(itinerary => {
-        
+      
       return (
       <Card>
       <Card.Body>
@@ -55,6 +62,7 @@ class Itinerarypage extends Component {
       </div>
       <p style={hStyle}>{itinerary.hashtags}</p>
       <div>
+        
       <LikeButton />
       </div>
       </div>
@@ -118,8 +126,11 @@ class Itinerarypage extends Component {
     }
 }
 
+
+
 const mapStateToProps = state => ({
     itineraries: state.itineraries.items
 })
+
 
 export default connect(mapStateToProps, {fetchItineraries})(Itinerarypage)

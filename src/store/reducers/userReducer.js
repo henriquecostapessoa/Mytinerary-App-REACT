@@ -1,4 +1,4 @@
-import { FETCH_REGISTRATIONS, NEW_REGISTRATION } from '../actions/types';
+import { FETCH_REGISTRATIONS, NEW_REGISTRATION, LIKE_SCREAM, UNLIKE_SCREAM } from '../actions/types';
 
 const initialState = {
     items: [],
@@ -13,6 +13,23 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 items: action.payload
+            }
+        case LIKE_SCREAM:
+            return {
+                ...state,
+                likes: [
+                    ...state.likes,
+                    {
+                        userHandle: state.credentials.handle,
+                        screamId: action.payload.screamId
+                    }
+                ]
+            }    
+        case UNLIKE_SCREAM:
+            return {
+                ...state,
+                likes: state.likes.filter(
+                    (like) => like.screamId === action.payload.screamId)
             }
         default:
             return state;

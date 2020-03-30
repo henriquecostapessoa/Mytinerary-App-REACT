@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import FavoriteIcon from "@material-ui/icons/Favorite"
+import FavoriteBorder from "@material-ui/icons/FavoriteBorder"
 
 export default class likeButton extends Component {
         constructor() {
@@ -17,7 +19,7 @@ export default class likeButton extends Component {
         
         render() {
           const text = this.state.liked ? 'liked' : 'haven\'t liked';
-          const label = this.state.liked ? 'Unlike' : 'Like'
+          const label = this.state.liked ? <FavoriteIcon color="primary" /> : <FavoriteBorder color="primary" />
           return (
             <div className="customContainer">
               <button className="btn btn-primary" onClick={this.handleClick}>
