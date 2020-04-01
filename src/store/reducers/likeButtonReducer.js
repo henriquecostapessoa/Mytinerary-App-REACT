@@ -1,32 +1,19 @@
-import { SET_SCREAMS, LIKE_SCREAM, UNLIKE_SCREAM, LOADING_DATA } from "../actions/types"
+import { FETCH_FAVORITES, NEW_FAVORITE } from '../actions/types';
 
 const initialState = {
-    screams: [],
-    scream:{},
-    loading: false
+    items: [],
+    item: {}
 }
 
 export default function (state = initialState, action) {
-    switch(action.type){
-        case LOADING_DATA:
+    switch (action.type) {
+        case FETCH_FAVORITES:
             return {
                 ...state,
-                loading: true
+                items: action.payload
             }
-        case SET_SCREAMS:
-            return{
-                ...state,
-                screams: actions.payload,
-                loading: false
-            }    
-        case LIKE_SCREAM:
-        case UNLIKE_SCREAM:
-            let index = state.screams.findIndex((scream) => scream.screamId === action.payload.screamId)
-            state.screams[index] = action.payload;
-            return {
-                ...state
-            }
+            
         default:
-            return state;    
+            return state;
     }
 }

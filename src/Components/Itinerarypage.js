@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { fetchItineraries } from '../store/actions/itineraryActions';
+import { fetchFavorites } from '../store/actions/likeButtonActions';
 import { connect } from 'react-redux'
 import { Link } from "react-router-dom"
 import Navbarpage from './Navbarpage';
@@ -9,6 +10,8 @@ import Activitiespage from './Activitiespage';
 import LikeButton from './likeButton';
 import Axios from 'axios';
 import PropTypes from "prop-types"
+import FavoriteIcon from "@material-ui/icons/Favorite"
+import FavoriteBorder from "@material-ui/icons/FavoriteBorder"
 
 
 class Itinerarypage extends Component {
@@ -18,22 +21,44 @@ class Itinerarypage extends Component {
           datain: false,  
           itineraries: [],
           id: "",
-          screams: null,
+          liked: false
         };
+        this.handClick = this.handClick.bind(this);
+        this.handleClick = this.handleClick.bind(this);
       }
 
 
       componentDidMount() {
         this.props.fetchItineraries(this.props.location.state.city._id)
+        /* this.props.fetchFavorites() */
     }
 
     handleClick(myId) {
-      this.setState({id: myId})
+      this.setState({
+        id: myId,
+      })
       
     }
-
+    handClick() {
+      this.setState({
+        liked: !this.state.liked,
+      });
+    }
     
     render() {
+      console.log(this.props)
+  
+    /* const favorites = this.props.favourites
+    itineraries.filter(itn=> favorites.includes(itn._id))
+    
+    itineraries.filter(itn=>{
+        favorites.forEach(itnFav=>{
+            if(itnFav._id === itn._id){
+                console.log(itn)
+            }
+        })
+    } ) */
+
       console.log(this.state.id)
       const pStyle = {
         margin: 10
@@ -42,7 +67,8 @@ class Itinerarypage extends Component {
         marginLeft: 10
       }
 
-
+      const text = this.state.liked ? 'liked' : 'haven\'t liked';
+      const label = this.state.liked ? <FavoriteIcon color="primary" /> : <FavoriteBorder color="primary" />
       const itineraries = this.props.itineraries.map(itinerary => {
       
       return (
@@ -62,8 +88,14 @@ class Itinerarypage extends Component {
       </div>
       <p style={hStyle}>{itinerary.hashtags}</p>
       <div>
-        
-      <LikeButton />
+      <div className="customContainer">
+              <button className="btn" onClick={this.handClick}>
+                {label}</button>
+              <p>
+                you {text} this. Click to toggle.
+              </p>
+            </div>
+      
       </div>
       </div>
       </div>
@@ -129,8 +161,9 @@ class Itinerarypage extends Component {
 
 
 const mapStateToProps = state => ({
-    itineraries: state.itineraries.items
+    itineraries: state.itineraries.items,
+    users: state.users.items
 })
 
 
-export default connect(mapStateToProps, {fetchItineraries})(Itinerarypage)
+export default connect(mapStateToProps, {fetchItineraries, fetchFavorites})(Itinerarypage)
