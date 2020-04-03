@@ -8,6 +8,7 @@ import Registrationpage from './Components/Registrationpage';
 import Citiespage from './Components/Citiespage';
 import Itinerarypage from './Components/Itinerarypage';
 import Activitiespage from './Components/Activitiespage';
+import Loginpage2 from './Components/Loginpage2';
 
 function App() {
   return (

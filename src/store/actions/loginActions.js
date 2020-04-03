@@ -3,9 +3,10 @@ import axios from "axios"
 
 export const fetchLogins = newUser  => async dispatch => {
     
+  
     const config = {
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       }
     };
   

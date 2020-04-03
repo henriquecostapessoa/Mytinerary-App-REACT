@@ -30,7 +30,7 @@ class Itinerarypage extends Component {
 
       componentDidMount() {
         this.props.fetchItineraries(this.props.location.state.city._id)
-        /* this.props.fetchFavorites() */
+        this.props.fetchFavorites()
     }
 
     handleClick(myId) {

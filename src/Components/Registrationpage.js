@@ -48,6 +48,7 @@ class Registrationpage extends Component {
     
         return (
             <div>
+                
                 <Navbarpage />
                 <MDBContainer>
                     <MDBRow>

@@ -1,18 +1,19 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import { Button, Form } from 'react-bootstrap'
-import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
+import { MDBContainer, MDBRow, MDBCol, MDBBtn } from 'mdbreact';
 import GoogleButton from 'react-google-button'
 import Navbarpage from './Navbarpage';
 import { fetchLogins } from '../store/actions/loginActions';
 
-class Loginpage extends Component {
+export default class Loginpage2 extends Component {
     constructor(props) {
         super(props);
         this.state = {
           users: [],
+          username:"",
           password:"",
           email:"",
+          picture:"",
           myAcount:""
         };
         this.onChange = this.onChange.bind(this)
@@ -29,9 +30,13 @@ class Loginpage extends Component {
     handleClick(e) {
         e.preventDefault()
         
+        const username = this.state.username
+        const picture = this.state.picture
         const email = this.state.email
         const password = this.state.password
         const newUser = {
+            username: username,
+            picture: picture,
             email: email,
             password: password
         }
@@ -50,9 +55,15 @@ class Loginpage extends Component {
                     <MDBCol md="6">
                     <form onSubmit={this.handleClick}>
                         <p className="h4 text-center mb-4">Sign in</p>
-                        <MDBInput name="email" value={this.state.email} onChange={this.onChange} label="Your email" icon="envelope" group type="email" validate error="wrong"
-                                success="right" />
-                        <MDBInput name="password" value={this.state.password} onChange={this.onChange} label="Your password" icon="lock" group type="password" validate />
+                        <label htmlFor="defaultFormLoginEmailEx" className="grey-text">
+                        Your email
+                        </label>
+                        <input type="email" value={this.state.email} id="defaultFormLoginEmailEx" className="form-control" />
+                        <br />
+                        <label htmlFor="defaultFormLoginPasswordEx" className="grey-text">
+                        Your password
+                        </label>
+                        <input type="password" value={this.state.password} id="defaultFormLoginPasswordEx" className="form-control" />
                         <div class="g-signin2">
                         <GoogleButton 
                         type="light" // can also be written as disabled={true} for clarity
@@ -70,9 +81,3 @@ class Loginpage extends Component {
         )
     }
 }
-
-const mapStateToProps = state => ({
-    users: state.users
-})
-
-export default connect(mapStateToProps, {fetchLogins})(Loginpage)
