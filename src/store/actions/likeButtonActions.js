@@ -34,7 +34,8 @@ export const fetchFavorites = () => dispatch =>  {
   const config = {
     headers: {
       'Content-Type': 'application/json',
-      "Authorization": `bearer ${token}`
+      "Authorization": `bearer ${token}`,
+      'Access-Control-Allow-Origin': '*'
     }
   };
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { fetchItineraries } from '../store/actions/itineraryActions';
 import { fetchFavorites } from '../store/actions/likeButtonActions';
+import { fetchloadlogin } from '../store/actions/loginActions';
 import { connect } from 'react-redux'
 import { Link } from "react-router-dom"
 import Navbarpage from './Navbarpage';
@@ -30,7 +31,7 @@ class Itinerarypage extends Component {
 
       componentDidMount() {
         this.props.fetchItineraries(this.props.location.state.city._id)
-        this.props.fetchFavorites()
+        this.props.fetchloadlogin()
     }
 
     handleClick(myId) {
@@ -166,4 +167,4 @@ const mapStateToProps = state => ({
 })
 
 
-export default connect(mapStateToProps, {fetchItineraries, fetchFavorites})(Itinerarypage)
+export default connect(mapStateToProps, {fetchItineraries, fetchFavorites, fetchloadlogin})(Itinerarypage)
