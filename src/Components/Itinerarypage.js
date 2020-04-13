@@ -31,7 +31,7 @@ class Itinerarypage extends Component {
 
       componentDidMount() {
         this.props.fetchItineraries(this.props.location.state.city._id)
-        this.props.fetchloadlogin()
+        /* this.props.fetchloadlogin() */
     }
 
     handleClick(myId) {

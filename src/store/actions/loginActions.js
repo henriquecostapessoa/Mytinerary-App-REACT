@@ -2,10 +2,11 @@ import { FETCH_LOGINS, FETCH_LOAD_LOGIN, NEW_LOGIN } from './types';
 import axios from "axios"
 import setToken from "../../utilities/setToken"
 
-export const fetchloadlogin = user => async dispatch => {
+export const fetchloadlogin = () => async dispatch => {
+  
   if(localStorage.token) {
   setToken(localStorage.token)
-  }
+  console.log("teste")}
   const token = localStorage.token;
   console.log(token)
   const config = {
@@ -16,8 +17,8 @@ export const fetchloadlogin = user => async dispatch => {
   };
 
 try {
-  const res = await axios.get("http://localhost:5000/user/userId", user, config)
-  console.log(res)
+  const res = await axios.get("http://localhost:5000/user/userId", config)
+  console.log(res.data)
   dispatch({
     type: FETCH_LOAD_LOGIN,
     payload: res.data
@@ -45,6 +46,7 @@ export const fetchLogins = newUser  => async dispatch => {
         type: FETCH_LOGINS,
         payload: res.data
       });
+      dispatch(fetchloadlogin())
     } catch (err) {
         console.log(err.message)
   

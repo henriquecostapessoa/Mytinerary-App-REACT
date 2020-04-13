@@ -1,4 +1,4 @@
-import { FETCH_LOGINS, NEW_LOGIN } from '../actions/types';
+import { FETCH_LOGINS, FETCH_LOAD_LOGIN, NEW_LOGIN } from '../actions/types';
 
 const initialState = {
     items: [],
@@ -12,8 +12,13 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 items: action.payload
-            }
+            }    
+        case FETCH_LOAD_LOGIN:
+            localStorage.setItem('token', action.payload.token);    
         default:
-            return state;
+            return {
+                ...state,
+                user: action.payload
+            }    
     }
 }
