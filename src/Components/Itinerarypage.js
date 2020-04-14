@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { fetchItineraries } from '../store/actions/itineraryActions';
 import { fetchFavorites } from '../store/actions/likeButtonActions';
 import { fetchloadlogin } from '../store/actions/loginActions';
+import { fetchLogins } from '../store/actions/loginActions';
 import { connect } from 'react-redux'
 import { Link } from "react-router-dom"
 import Navbarpage from './Navbarpage';
@@ -31,7 +32,6 @@ class Itinerarypage extends Component {
 
       componentDidMount() {
         this.props.fetchItineraries(this.props.location.state.city._id)
-        /* this.props.fetchloadlogin() */
     }
 
     handleClick(myId) {
@@ -49,7 +49,7 @@ class Itinerarypage extends Component {
     render() {
       console.log(this.props)
   
-    /* const favorites = this.props.favourites
+    /* const favorites = this.state
     itineraries.filter(itn=> favorites.includes(itn._id))
     
     itineraries.filter(itn=>{
@@ -163,8 +163,9 @@ class Itinerarypage extends Component {
 
 const mapStateToProps = state => ({
     itineraries: state.itineraries.items,
-    users: state.users.items
+    /* user: state.login */
 })
 
 
-export default connect(mapStateToProps, {fetchItineraries, fetchFavorites, fetchloadlogin})(Itinerarypage)
+
+export default connect(mapStateToProps, {fetchItineraries, fetchFavorites, fetchloadlogin, fetchLogins})(Itinerarypage)

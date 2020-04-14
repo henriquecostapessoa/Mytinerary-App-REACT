@@ -6,7 +6,7 @@ export const fetchloadlogin = () => async dispatch => {
   
   if(localStorage.token) {
   setToken(localStorage.token)
-  console.log("teste")}
+  console.log(localStorage.token)}
   const token = localStorage.token;
   console.log(token)
   const config = {
