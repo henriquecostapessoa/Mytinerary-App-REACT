@@ -14,11 +14,15 @@ export default function (state = initialState, action) {
                 items: action.payload
             }    
         case FETCH_LOAD_LOGIN:
-            localStorage.setItem('token', action.payload.token);    
-        default:
+           console.log(action.payload)
+        
             return {
                 ...state,
                 user: action.payload
-            }    
+                
+            }  
+            default:
+                return state;  
+           
     }
 }

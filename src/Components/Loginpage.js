@@ -37,7 +37,7 @@ class Loginpage extends Component {
         }
        
         this.props.fetchLogins (newUser)
-        
+        this.props.history.push("/citiespage")
       }
       
     render() {
@@ -57,7 +57,7 @@ class Loginpage extends Component {
                         <GoogleButton 
                         type="light" // can also be written as disabled={true} for clarity
                         onClick={() => { window.location.href="http://localhost:5000/auth/google" }}
-                        />   
+                        />
                         </div>
                         <div className="text-center mt-4"> 
                         <MDBBtn color="indigo" type="submit">Login</MDBBtn>

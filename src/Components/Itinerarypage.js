@@ -44,21 +44,25 @@ class Itinerarypage extends Component {
       this.setState({
         liked: !this.state.liked,
       });
-    }
-    
-    render() {
-      console.log(this.props)
-  
-    /* const favorites = this.state
+    const favorites = this.props.user.favourites
+    console.log(favorites)
+    const itineraries = this.props.itineraries
+    console.log(itineraries)
     itineraries.filter(itn=> favorites.includes(itn._id))
     
     itineraries.filter(itn=>{
         favorites.forEach(itnFav=>{
-            if(itnFav._id === itn._id){
+            if(itnFav.itineraryId === itn._id){
                 console.log(itn)
             }
         })
-    } ) */
+    } ) 
+    }
+
+    
+    render() {
+      console.log(this.props)
+
 
       console.log(this.state.id)
       const pStyle = {
@@ -163,9 +167,9 @@ class Itinerarypage extends Component {
 
 const mapStateToProps = state => ({
     itineraries: state.itineraries.items,
-    /* user: state.login */
+    user: state.login.user
 })
 
 
 
-export default connect(mapStateToProps, {fetchItineraries, fetchFavorites, fetchloadlogin, fetchLogins})(Itinerarypage)
+export default connect(mapStateToProps, {fetchItineraries, fetchFavorites})(Itinerarypage)
