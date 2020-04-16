@@ -1,4 +1,4 @@
-import { FETCH_LOGINS, FETCH_LOAD_LOGIN, NEW_LOGIN } from '../actions/types';
+import { FETCH_LOGINS, FETCH_LOAD_LOGIN, FETCH_DELETE_LOGIN, NEW_LOGIN } from '../actions/types';
 
 const initialState = {
     items: [],
@@ -14,6 +14,14 @@ export default function (state = initialState, action) {
                 items: action.payload
             }    
         case FETCH_LOAD_LOGIN:
+           console.log(action.payload)
+        
+            return {
+                ...state,
+                user: action.payload
+                
+            }  
+        case FETCH_DELETE_LOGIN:
            console.log(action.payload)
         
             return {
