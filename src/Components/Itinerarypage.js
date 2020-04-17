@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { fetchItineraries } from '../store/actions/itineraryActions';
 import { fetchFavorites } from '../store/actions/likeButtonActions';
+import { deletefavorite } from '../store/actions/loginActions';
 import { fetchloadlogin } from '../store/actions/loginActions';
 import { fetchLogins } from '../store/actions/loginActions';
 import { connect } from 'react-redux'
@@ -172,4 +173,4 @@ const mapStateToProps = state => ({
 
 
 
-export default connect(mapStateToProps, {fetchItineraries, fetchFavorites})(Itinerarypage)
+export default connect(mapStateToProps, {fetchItineraries, fetchFavorites, deletefavorite})(Itinerarypage)

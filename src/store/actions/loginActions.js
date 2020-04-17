@@ -28,7 +28,7 @@ try {
 }
 }
 
-export const fetchdeletelogin = () => async dispatch => {
+export const deletefavorite = () => async dispatch => {
   
   if(localStorage.token) {
   setToken(localStorage.token)
@@ -43,7 +43,7 @@ export const fetchdeletelogin = () => async dispatch => {
   };
 
 try {
-  const res = await axios.get("http://localhost:5000/user/id/delete", config)
+  const res = await axios.delete("http://localhost:5000/user/id/delete", config)
   console.log(res.data)
   dispatch({
     type: FETCH_DELETE_LOGIN,
@@ -73,7 +73,6 @@ export const fetchLogins = newUser  => async dispatch => {
         payload: res.data
       });
       dispatch(fetchloadlogin())
-      dispatch(fetchdeletelogin())
     } catch (err) {
         console.log(err.message)
   
