@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { fetchItineraries } from '../store/actions/itineraryActions';
 import { fetchFavorites } from '../store/actions/likeButtonActions';
 import { deletefavorite } from '../store/actions/loginActions';
+import { addfavorite } from '../store/actions/loginActions';
 import { fetchloadlogin } from '../store/actions/loginActions';
 import { fetchLogins } from '../store/actions/loginActions';
 import { connect } from 'react-redux'
@@ -24,10 +25,15 @@ class Itinerarypage extends Component {
           datain: false,  
           itineraries: [],
           id: "",
-          liked: false
+          liked: false,
+          itineraryId: "",
+          title:"",
+          cityId:""
         };
         this.handClick = this.handClick.bind(this);
         this.handleClick = this.handleClick.bind(this);
+        this.deleteClick = this.deleteClick.bind(this);
+        this.addClick = this.addClick.bind(this);
       }
 
 
@@ -42,10 +48,14 @@ class Itinerarypage extends Component {
       
     }
     handClick() {
-      this.setState({
+      if(this.setState({
         liked: !this.state.liked,
-      });
-    const favorites = this.props.user.favourites
+      })) {
+        return this.deleteClick()
+      } else {
+        return this.addClick()
+      }
+    /* const favorites = this.props.user.favourites
     console.log(favorites)
     const itineraries = this.props.itineraries
     console.log(itineraries)
@@ -57,7 +67,37 @@ class Itinerarypage extends Component {
                 console.log(itn)
             }
         })
-    } ) 
+    } )  */
+    }
+
+    addClick(e) {
+      e.preventDefault()
+        
+        const itineraryId = this.state.itineraryId
+        const title = this.state.title
+        const cityId = this.state.cityId
+        const favorite = {
+            itineraryId: itineraryId,
+            title: title,
+            cityId: cityId
+        }
+       
+        this.props.addfavorite (favorite)
+    }
+
+    deleteClick(e) {
+      e.preventDefault()
+        
+        const itineraryId = this.state.itineraryId
+        const title = this.state.title
+        const cityId = this.state.cityId
+        const favorite = {
+            itineraryId: itineraryId,
+            title: title,
+            cityId: cityId
+        }
+       
+        this.props.deletefavorite (favorite)
     }
 
     
@@ -173,4 +213,4 @@ const mapStateToProps = state => ({
 
 
 
-export default connect(mapStateToProps, {fetchItineraries, fetchFavorites, deletefavorite})(Itinerarypage)
+export default connect(mapStateToProps, {fetchItineraries, fetchFavorites, deletefavorite, addfavorite})(Itinerarypage)
