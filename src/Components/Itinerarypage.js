@@ -3,8 +3,6 @@ import { fetchItineraries } from '../store/actions/itineraryActions';
 import { fetchFavorites } from '../store/actions/likeButtonActions';
 import { deletefavorite } from '../store/actions/loginActions';
 import { addfavorite } from '../store/actions/loginActions';
-import { fetchloadlogin } from '../store/actions/loginActions';
-import { fetchLogins } from '../store/actions/loginActions';
 import { connect } from 'react-redux'
 import { Link } from "react-router-dom"
 import Navbarpage from './Navbarpage';
@@ -47,17 +45,20 @@ class Itinerarypage extends Component {
       })
       
     }
-    handClick() {
-      if(this.setState({
+    handClick(itinerary) {
+      
+      console.log(itinerary)
+      /* this.setState({
+      
         liked: !this.state.liked,
-      })) {
-        return this.deleteClick()
-      } else {
-        return this.addClick()
-      }
+        
+      })  */
+       
     /* const favorites = this.props.user.favourites
-    console.log(favorites)
-    const itineraries = this.props.itineraries
+    
+    favorites.filter(fav=> fav._id === itinerary._id)
+    console.log(favorites) */
+    /* const itineraries = this.props.itineraries
     console.log(itineraries)
     itineraries.filter(itn=> favorites.includes(itn._id))
     
@@ -67,13 +68,28 @@ class Itinerarypage extends Component {
                 console.log(itn)
             }
         })
-    } )  */
+    } ) */
     }
 
-    addClick(e) {
-      e.preventDefault()
-        
-        const itineraryId = this.state.itineraryId
+    addClick(favorite) {
+    
+        console.log(favorite)
+        /* const itineraryId = this.state.itineraryId
+        const title = this.state.title
+        const cityId = this.state.cityId
+        const favorite = {
+            itineraryId: itineraryId,
+            title: title,
+            cityId: cityId
+        }
+       console.log(favorite)
+        this.props.addfavorite (favorite) */
+    }
+
+    deleteClick(favorite) {
+    
+        console.log(favorite)
+        /* const itineraryId = this.state.itineraryId
         const title = this.state.title
         const cityId = this.state.cityId
         const favorite = {
@@ -82,22 +98,7 @@ class Itinerarypage extends Component {
             cityId: cityId
         }
        
-        this.props.addfavorite (favorite)
-    }
-
-    deleteClick(e) {
-      e.preventDefault()
-        
-        const itineraryId = this.state.itineraryId
-        const title = this.state.title
-        const cityId = this.state.cityId
-        const favorite = {
-            itineraryId: itineraryId,
-            title: title,
-            cityId: cityId
-        }
-       
-        this.props.deletefavorite (favorite)
+        this.props.deletefavorite (favorite) */
     }
 
     
@@ -135,7 +136,7 @@ class Itinerarypage extends Component {
       <p style={hStyle}>{itinerary.hashtags}</p>
       <div>
       <div className="customContainer">
-              <button className="btn" onClick={this.handClick}>
+              <button className="btn" onClick={this.handClick(itinerary)}>
                 {label}</button>
               <p>
                 you {text} this. Click to toggle.
