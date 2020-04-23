@@ -1,8 +1,7 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { Button, Form } from 'react-bootstrap'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
-import GoogleButton from 'react-google-button'
+import GoogleButton from 'react-google-button';
 import Navbarpage from './Navbarpage';
 import { fetchLogins } from '../store/actions/loginActions';
 
@@ -43,28 +42,27 @@ class Loginpage extends Component {
     render() {
         return (
             <div>
-            
                 <Navbarpage />
                 <MDBContainer>
-                <MDBRow>
-                    <MDBCol md="6">
-                    <form onSubmit={this.handleClick}>
-                        <p className="h4 text-center mb-4">Sign in</p>
-                        <MDBInput name="email" value={this.state.email} onChange={this.onChange} label="Your email" icon="envelope" group type="email" validate error="wrong"
+                    <MDBRow>
+                        <MDBCol md="6">
+                            <form onSubmit={this.handleClick}>
+                                <p className="h4 text-center mb-4">Sign in</p>
+                                <MDBInput name="email" value={this.state.email} onChange={this.onChange} label="Your email" icon="envelope" group type="email" validate error="wrong"
                                 success="right" />
-                        <MDBInput name="password" value={this.state.password} onChange={this.onChange} label="Your password" icon="lock" group type="password" validate />
-                        <div class="g-signin2">
-                        <GoogleButton 
-                        type="light" // can also be written as disabled={true} for clarity
-                        onClick={() => { window.location.href="http://localhost:5000/auth/google" }}
-                        />
-                        </div>
-                        <div className="text-center mt-4"> 
-                        <MDBBtn color="indigo" type="submit">Login</MDBBtn>
-                        </div>
-                    </form>
-                    </MDBCol>
-                </MDBRow>
+                                <MDBInput name="password" value={this.state.password} onChange={this.onChange} label="Your password" icon="lock" group type="password" validate />
+                                <div className="g-signin2">
+                                    <GoogleButton 
+                                    type="light" // can also be written as disabled={true} for clarity
+                                    onClick={() => { window.location.href="http://localhost:5000/auth/google" }}
+                                    />
+                                </div>
+                                <div className="text-center mt-4"> 
+                                    <MDBBtn color="indigo" type="submit">Login</MDBBtn>
+                                </div>
+                            </form>
+                        </MDBCol>
+                    </MDBRow>
                 </MDBContainer>
             </div>
         )

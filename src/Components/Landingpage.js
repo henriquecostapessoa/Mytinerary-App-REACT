@@ -1,10 +1,9 @@
-import React, { Component, useRef, useState } from 'react'
-import {Navbar, Nav, NavDropdown, Overlay, Tooltip, Image, Carousel} from 'react-bootstrap'
-import {Link} from "react-router-dom"
+import React, { Component } from 'react';
+import { Image, Carousel } from 'react-bootstrap';
+import {Link} from "react-router-dom";
 import Navbarpage from './Navbarpage';
 
-
-export default class Landingpage extends Component {
+class Landingpage extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -158,3 +157,5 @@ export default class Landingpage extends Component {
         )
     }
 }
+
+export default (Landingpage)

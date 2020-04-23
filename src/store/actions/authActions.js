@@ -1,4 +1,4 @@
-import { FETCH_GOOGLELOGINS, NEW_GOOGLELOGIN } from './types';
+import { FETCH_GOOGLELOGINS } from './types';
 import axios from "axios"
 
 export const fetchGoogleLogins = newUser  => async dispatch => {

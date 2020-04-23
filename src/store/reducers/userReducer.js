@@ -1,9 +1,9 @@
-import { FETCH_REGISTRATIONS, NEW_REGISTRATION, LIKE_SCREAM, UNLIKE_SCREAM } from '../actions/types';
+import { FETCH_REGISTRATIONS } from '../actions/types';
 
 const initialState = {
     items: [],
     item: {},
-}
+};
 
 export default function (state = initialState, action) {
     switch (action.type) {
@@ -18,4 +18,4 @@ export default function (state = initialState, action) {
         default:
             return state;
     }
-}
+};

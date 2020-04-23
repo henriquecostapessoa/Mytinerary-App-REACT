@@ -1,8 +1,8 @@
-import React, { Component, useRef, useState } from 'react'
-import {Form, FormControl, Image, Card, NavDropdown, Navbar, Nav, Overlay, Tooltip} from 'react-bootstrap'
-import { connect } from 'react-redux'
+import React, { Component } from 'react';
+import {Form, FormControl, Card } from 'react-bootstrap';
+import { connect } from 'react-redux';
 import { fetchCities } from '../store/actions/cityActions';
-import {Link} from "react-router-dom"
+import {Link} from "react-router-dom";
 import Navbarpage from './Navbarpage';
 import queryString from "query-string";
 
@@ -44,39 +44,31 @@ class Citiespage extends Component {
             return (
                 <div key={index}>
                   <Card id="allCard" className="bg-dark text-white" >
-                  <Card.Img src={city.image} alt="Card image" style={{width: 358, height: 225}} />
-                  <Card.ImgOverlay>
-                    <Card.Title id="cityName">
-                    <Link id="Itinerary" to={{
-                      pathname:"/itinerary", 
-                      state: {
-                        city: city
-                      }}}> 
-                    
-                    <p id="cityColor"> {city.name}</p> 
-    
-                  </Link>
-                    </Card.Title>
-                
-                  </Card.ImgOverlay>
-                </Card>
-                   
+                    <Card.Img src={city.image} alt="Card image" style={{width: 358, height: 225}} />
+                      <Card.ImgOverlay>
+                        <Card.Title id="cityName">
+                          <Link id="Itinerary" to={{
+                            pathname:"/itinerary", 
+                            state: {
+                            city: city
+                            }}}> 
+                            <p id="cityColor"> {city.name}</p> 
+                          </Link>
+                        </Card.Title>
+                      </Card.ImgOverlay>
+                  </Card> 
                 </div>
             )
-            
-    
         })
 
        
         return (
             <div>
-                <Navbarpage />
-                    
-                <Form inline>
-                    <FormControl type="text" placeholder="Search" className="mr-sm-2" onChange={this.onChange} />
-                </Form>
-
-            {cities}
+              <Navbarpage />  
+              <Form inline>
+                <FormControl type="text" placeholder="Search" className="mr-sm-2" onChange={this.onChange} />
+              </Form>
+              {cities}
             </div>
         )
     }

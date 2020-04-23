@@ -1,14 +1,13 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import {Provider} from 'react-redux';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Landingpage from './Components/Landingpage';
 import Loginpage from './Components/Loginpage';
 import Registrationpage from './Components/Registrationpage';
 import Citiespage from './Components/Citiespage';
 import Itinerarypage from './Components/Itinerarypage';
 import Activitiespage from './Components/Activitiespage';
-import Loginpage2 from './Components/Loginpage2';
+
 
 function App() {
   return (
@@ -26,7 +25,7 @@ function App() {
       </div>
     </BrowserRouter>
     
-  );
-}
+  )
+};
 
 export default App;

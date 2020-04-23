@@ -1,9 +1,9 @@
-import { FETCH_GOOGLELOGINS, NEW_GOOGLELOGIN } from '../actions/types';
+import { FETCH_GOOGLELOGINS } from '../actions/types';
 
 const initialState = {
     items: [],
     item: {},
-}
+};
 
 export default function (state = initialState, action) {
     switch (action.type) {
@@ -16,4 +16,4 @@ export default function (state = initialState, action) {
         default:
             return state;
     }
-}
+};

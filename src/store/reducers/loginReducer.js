@@ -1,9 +1,9 @@
-import { FETCH_LOGINS, FETCH_LOAD_LOGIN, FETCH_DELETE_FAVORITE, FETCH_ADD_FAVORITE, NEW_LOGIN } from '../actions/types';
+import { FETCH_LOGINS, FETCH_LOAD_LOGIN, FETCH_DELETE_FAVORITE, FETCH_ADD_FAVORITE } from '../actions/types';
 
 const initialState = {
     items: [],
     item: {},
-}
+};
 
 export default function (state = initialState, action) {
     switch (action.type) {
@@ -41,4 +41,4 @@ export default function (state = initialState, action) {
                 return state;  
            
     }
-}
+};

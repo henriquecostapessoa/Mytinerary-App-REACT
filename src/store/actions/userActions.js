@@ -1,4 +1,4 @@
-import { FETCH_REGISTRATIONS, NEW_REGISTRATION } from './types';
+import { FETCH_REGISTRATIONS } from './types';
 import axios from "axios"
 
       export const fetchRegistrations = newUser  => async dispatch => {

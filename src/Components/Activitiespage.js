@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { fetchActivities } from '../store/actions/activitiesActions';
-import { connect } from 'react-redux'
-import {Navbar, Nav, NavDropdown, Overlay, Tooltip, Image, Carousel, Card} from 'react-bootstrap'
+import { connect } from 'react-redux';
+import { Carousel, Card} from 'react-bootstrap';
 
 class Activitiespage extends Component {
     constructor(props) {
@@ -21,8 +21,8 @@ class Activitiespage extends Component {
 
     render() {
         let myCar = null;
-if (this.props.activities.length > 0) {
-myCar = (
+            if (this.props.activities.length > 0) {
+            myCar = (
             <Carousel>
                 <Carousel.Item>
                     <div style={{display: 'flex', flexWrap: 'wrap'}}>
@@ -80,24 +80,23 @@ myCar = (
                     </Card>
                     </div>
                 </Carousel.Item>
-                </Carousel>
-)    
-}
+            </Carousel>
+            )    
+        }
 
         return (
             <div>
-              <div className="carousel">
-                {myCar}
+                <div className="carousel">
+                    {myCar}
                 </div><br></br>
                 <div>
-                <form onSubmit={this.handleSubmit}>
-                    <label>
-                    Comments
-                    </label><br></br>
-                    <input type="text" placeholder="Your comment..." ref={(input) => this.input = input} />
-                    <input type="submit" value="Submit" />
-                    
-                </form>
+                    <form onSubmit={this.handleSubmit}>
+                        <label>
+                        Comments
+                        </label><br></br>
+                        <input type="text" placeholder="Your comment..." ref={(input) => this.input = input} />
+                        <input type="submit" value="Submit" />   
+                    </form>
                 </div> 
             </div>
 

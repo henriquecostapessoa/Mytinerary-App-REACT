@@ -1,9 +1,9 @@
-import { FETCH_CITIES, NEW_CITY } from '../actions/types';
+import { FETCH_CITIES } from '../actions/types';
 
 const initialState = {
     items: [],
     item: {}
-}
+};
 
 export default function (state = initialState, action) {
     switch (action.type) {
@@ -15,4 +15,4 @@ export default function (state = initialState, action) {
         default:
             return state;
     }
-}
+};

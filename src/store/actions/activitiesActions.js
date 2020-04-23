@@ -1,4 +1,4 @@
-import { FETCH_ACTIVITIES, NEW_ACTIVITY } from './types';
+import { FETCH_ACTIVITIES } from './types';
 
 export const fetchActivities = (id) => dispatch =>  {
     console.log(id)
@@ -11,4 +11,4 @@ export const fetchActivities = (id) => dispatch =>  {
                 payload: activities
             }) 
         )
-}
+};

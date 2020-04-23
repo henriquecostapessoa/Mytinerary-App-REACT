@@ -21,62 +21,93 @@
 
 .bm-burger-bars {
     background: #373a47;
-  }
+}
 
-  .carousel {
-      display: flex;
-      justify-content: space-around;
-  }
+.carousel {
+    display: flex;
+    justify-content: space-around;
+}
 
-  .flex {
+.flex {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
-  }
+}
 
-  #allCard {
+#allCard {
     margin-top: 10px;
-  }
+}
 
-  #cityName {
-      text-align: center;
-      padding: 70px 0;
-  }
+#cityName {
+    text-align: center;
+    padding: 70px 0;
+}
 
-  #cityColor {
-      color: white;
-      font-size: 30px;
-  }
+#cityColor {
+    color: white;
+    font-size: 30px;
+}
 
-  .flex-container {
+.flex-container {
     display: flex;
     justify-content: space-around;
-  }
+}
 
-  #alignProfile {
-      text-align: center;
-  }
+#alignProfile {
+    text-align: center;
+}
 
-  #organizeRating {
-      display: flex;
-      justify-content: space-between;
-  }
+#organizeRating {
+    display: flex;
+    justify-content: space-between;
+}
 
-  Nav {
-      text-align: end;
-  }
+Nav {
+  text-align: end;
+}
 
-  .g-signin2{
+a:link {
+  color: black;
+}
+
+/* visited link */
+a:visited {
+  color: black;
+}
+
+/* mouse over link */
+a:hover {
+  color: black;
+}
+
+/* selected link */
+a:active {
+  color: black;
+}
+
+.g-signin2{
     width: 100%;
-  }
+}
   
-  .g-signin2 > div{
+.g-signin2 > div{
     margin: 0 auto;
     margin-top: 25px;
-  }
+}
 
-  .btn-primary {
+.btn-primary {
     background-color: #23aa4e;
     border-color: #177d37;
-  }
+}
+
+#registration {
+  color: white;
+}
+
+#login {
+  color: white;
+}
+
+#logout {
+  color: white;
+}

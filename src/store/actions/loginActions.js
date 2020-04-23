@@ -1,6 +1,6 @@
-import { FETCH_LOGINS, FETCH_LOAD_LOGIN, FETCH_DELETE_FAVORITE, FETCH_ADD_FAVORITE, NEW_LOGIN } from './types';
-import axios from "axios"
-import setToken from "../../utilities/setToken"
+import { FETCH_LOGINS, FETCH_LOAD_LOGIN, FETCH_DELETE_FAVORITE, FETCH_ADD_FAVORITE } from './types';
+import axios from "axios";
+import setToken from "../../utilities/setToken";
 
 export const fetchloadlogin = () => async dispatch => {
   
@@ -26,7 +26,7 @@ try {
 } catch (err) {
   console.log(err.message)
 }
-}
+};
 
 export const deletefavorite = (body) => async dispatch => {
   
@@ -53,7 +53,7 @@ try {
 } catch (err) {
   console.log(err.message)
 }
-}
+};
 
 export const addfavorite = (body) => async dispatch => {
   const body = JSON.stringify(body)
@@ -71,33 +71,7 @@ export const addfavorite = (body) => async dispatch => {
     payload: response.data
   }))
   .catch(err => console.log(err))
-}
-
-/* export const addfavorite = (body) => async dispatch => {
-  
-  if(localStorage.token) {
-  setToken(localStorage.token)
-  }
-  const token = localStorage.token;
-
-  const config = {
-    headers: {
-      'Content-Type': 'application/json',
-      "Authorization": `bearer ${token}`
-    }
-  };
-console.log(config)
-try {
-  const res = await axios.post("http://localhost:5000/user/fav/add", config, body)
-  console.log(res.data)
-  dispatch({
-    type: FETCH_ADD_FAVORITE,
-    payload: res.data
-  })
-} catch (err) {
-  console.log(err.message)
-}
-} */
+};
 
 export const fetchLogins = newUser  => async dispatch => {
     
