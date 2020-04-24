@@ -18,7 +18,7 @@ export const fetchloadlogin = () => async dispatch => {
 
 try {
   const res = await axios.get("http://localhost:5000/user/userId", config)
-  console.log(res.data)
+  
   dispatch({
     type: FETCH_LOAD_LOGIN,
     payload: res.data
@@ -45,7 +45,7 @@ export const deletefavorite = (body) => async dispatch => {
 
 try {
   const res = await axios.post("http://localhost:5000/user/fav/delete", config, body)
-  console.log(res.data)
+  
   dispatch({
     type: FETCH_DELETE_FAVORITE,
     payload: res.data
@@ -56,8 +56,8 @@ try {
 };
 
 export const addfavorite = (body) => async dispatch => {
-  const body = JSON.stringify(body)
-  fetch("http://localhost:5000/user/fav/add", {
+  /* const body = JSON.stringify(body) */
+  fetch("https://cors-anywhere.herokuapp.com/" + "http://localhost:5000/user/fav/add", {
     method: "POST",
     headers: {
       "content-type": "application/json",
@@ -83,10 +83,10 @@ export const fetchLogins = newUser  => async dispatch => {
     };
   
     try {
-      console.log(newUser)
+      
      
       const res = await axios.post('http://localhost:5000/login', newUser, config);
-  console.log(res.data)
+  
       dispatch({
         type: FETCH_LOGINS,
         payload: res.data

@@ -14,7 +14,7 @@ export default function (state = initialState, action) {
                 items: action.payload
             }    
         case FETCH_LOAD_LOGIN:
-           console.log(action.payload)
+           
         
             return {
                 ...state,
@@ -22,7 +22,7 @@ export default function (state = initialState, action) {
                 
             }  
         case FETCH_DELETE_FAVORITE:
-           console.log(action.payload)
+           
         
             return {
                 ...state,
@@ -30,7 +30,7 @@ export default function (state = initialState, action) {
                 
             }  
         case FETCH_ADD_FAVORITE:
-           console.log(action.payload)
+           
         
             return {
                 ...state,

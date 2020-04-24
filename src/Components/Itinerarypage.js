@@ -52,32 +52,34 @@ class Itinerarypage extends Component {
     
     favorites.filter(fav=> fav._id === itinerary._id)
     console.log(favorites)
-    /* const itineraries = this.props.itineraries
-    console.log(itineraries)
+    const itineraries = this.props.itineraries
+    
     itineraries.filter(itn=> favorites.includes(itn._id))
     
     itineraries.filter(itn=>{
-        favorites.forEach(itnFav=>{
+        favorites.forEach(itnFav =>{
             if(itnFav.itineraryId === itn._id){
                 console.log(itn)
-            }
+            } else console.log(this.addClick())
+            
         })
-    } ) */
+    } )
     }
 
-    addClick(favorite) {
+    addClick() {
     
-        console.log(favorite)
-        /* const itineraryId = this.state.itineraryId
+        
+        const itineraryId = this.state.itineraryId
         const title = this.state.title
         const cityId = this.state.cityId
-        const favorite = {
+        const newfavorite = {
             itineraryId: itineraryId,
             title: title,
             cityId: cityId
         }
-       console.log(favorite)
-        this.props.addfavorite (favorite) */
+       
+        this.props.addfavorite (newfavorite)
+        
     }
 
     deleteClick(favorite) {
