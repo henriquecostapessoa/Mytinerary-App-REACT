@@ -41,68 +41,60 @@ class Itinerarypage extends Component {
     }
     handClick(itinerary) {
       
-      /* console.log(itinerary) */
-      /* this.setState({
+      this.setState({
       
         liked: !this.state.liked,
         
-      })  */
+      }) 
        
     const favorites = this.props.user.favourites
     
-    favorites.filter(fav=> fav._id === itinerary._id)
-    console.log(favorites)
-    const itineraries = this.props.itineraries
+    let result = favorites.filter(fav=> fav.itineraryId === itinerary._id)
     
-    itineraries.filter(itn=> favorites.includes(itn._id))
+    /* const itineraries = this.props.itineraries */
     
-    itineraries.filter(itn=>{
-        favorites.forEach(itnFav =>{
-            if(itnFav.itineraryId === itn._id){
-                console.log(itn)
-            } else console.log(this.addClick())
-            
-        })
-    } )
+    if(result.length > 0) {
+      this.deleteClick(itinerary)
+    } else if(result.length === 0) {
+      this.addClick(itinerary)
+    }
+    console.log(result)
     }
 
-    addClick() {
+    addClick(itinerary) {
     
-        
-        const itineraryId = this.state.itineraryId
-        const title = this.state.title
-        const cityId = this.state.cityId
+        console.log(itinerary)
+        const itineraryId = itinerary._id
+        const title = itinerary.title
+        const cityId = itinerary.cityId
         const newfavorite = {
             itineraryId: itineraryId,
             title: title,
             cityId: cityId
         }
-       
-        this.props.addfavorite (newfavorite)
+       console.log(newfavorite)
+        this.props.addfavorite (newfavorite) 
         
     }
 
-    deleteClick(favorite) {
+    deleteClick(itinerary) {
     
-        console.log(favorite)
-        /* const itineraryId = this.state.itineraryId
-        const title = this.state.title
-        const cityId = this.state.cityId
-        const favorite = {
+        console.log(itinerary)
+        const itineraryId = itinerary._id
+        const title = itinerary.title
+        const cityId = itinerary.cityId
+        const deletefavorite = {
             itineraryId: itineraryId,
             title: title,
             cityId: cityId
         }
        
-        this.props.deletefavorite (favorite) */
+        this.props.deletefavorite (deletefavorite)
     }
 
     
     render() {
       console.log(this.props.user)
-
-
-      /* console.log(this.state.id) */
       const pStyle = {
         margin: 10
       }  

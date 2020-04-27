@@ -44,7 +44,7 @@ export const deletefavorite = (body) => async dispatch => {
   
 
 try {
-  const res = await axios.post("http://localhost:5000/user/fav/delete", config, body)
+  const res = await axios.post("http://localhost:5000/user/fav/delete", body, config)
   
   dispatch({
     type: FETCH_DELETE_FAVORITE,
@@ -56,22 +56,32 @@ try {
 };
 
 export const addfavorite = (body) => async dispatch => {
-  /* const body = JSON.stringify(body) */
-  fetch("https://cors-anywhere.herokuapp.com/" + "http://localhost:5000/user/fav/add", {
-    method: "POST",
+  
+  if(localStorage.token) {
+  setToken(localStorage.token)
+  }
+  const token = localStorage.token;
+
+  const config = {
     headers: {
-      "content-type": "application/json",
-      "Authorization": `bearer ${localStorage.token}`
-    },
-    body
-  })
-  .then (res => res.json())
-  .then (response => dispatch({
+      'Content-Type': 'application/json',
+      "Authorization": `bearer ${token}`
+    }
+  };
+  
+
+try {
+  const res = await axios.post("http://localhost:5000/user/fav/add", body, config)
+  
+  dispatch({
     type: FETCH_ADD_FAVORITE,
-    payload: response.data
-  }))
-  .catch(err => console.log(err))
+    payload: res.data
+  })
+} catch (err) {
+  console.log(err.message)
+}
 };
+
 
 export const fetchLogins = newUser  => async dispatch => {
     

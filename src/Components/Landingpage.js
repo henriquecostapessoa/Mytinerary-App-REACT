@@ -77,8 +77,8 @@ class Landingpage extends Component {
                             />
                             <Image
                             className="d-block w-50"
-                            src={pictures[3]}
                             alt="Third slide"
+                            src={pictures[3]}
                             thumbnail 
                             style={{width: 150, height: 125}} 
                             />
