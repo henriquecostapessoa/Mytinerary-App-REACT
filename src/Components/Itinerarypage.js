@@ -17,7 +17,7 @@ class Itinerarypage extends Component {
           datain: false,  
           itineraries: [],
           id: "",
-          liked: false,
+          liked: [],
           itineraryId: "",
           title:"",
           cityId:""
@@ -39,27 +39,22 @@ class Itinerarypage extends Component {
       })
       
     }
+
     handClick(itinerary) {
-      
-      this.setState({
-      
-        liked: !this.state.liked,
-        
-      }) 
-       
-    const favorites = this.props.user.favourites
+
+      const favorites = this.props.user.favourites
+
+      const result = favorites.filter(fav=> fav.itineraryId === itinerary._id)
     
-    let result = favorites.filter(fav=> fav.itineraryId === itinerary._id)
-    
-    /* const itineraries = this.props.itineraries */
     
     if(result.length > 0) {
       this.deleteClick(itinerary)
     } else if(result.length === 0) {
       this.addClick(itinerary)
     }
-    console.log(result)
-    }
+
+    
+  }
 
     addClick(itinerary) {
     
@@ -95,15 +90,22 @@ class Itinerarypage extends Component {
     
     render() {
       console.log(this.props.user)
+      console.log(this.props.itineraries.map(itn => itn._id))
+      
+     if(this.props.user !== undefined) {
+      this.props.user.favourites.forEach(fav => this.state.liked.push(fav.itineraryId))
+      } 
+      console.log(this.state.liked)
       const pStyle = {
         margin: 10
       }  
       const hStyle = {
         marginLeft: 10
       }
-
+    
       const text = this.state.liked ? 'liked' : 'haven\'t liked';
-      const label = this.state.liked ? <FavoriteIcon color="primary" /> : <FavoriteBorder color="primary" />
+      
+      const label = this.state.liked === this.props.itineraries.map(itn => itn._id) ? <FavoriteIcon color="primary" /> : <FavoriteBorder color="primary" />
       const itineraries = this.props.itineraries.map((itinerary, index) => {
       
       return (
