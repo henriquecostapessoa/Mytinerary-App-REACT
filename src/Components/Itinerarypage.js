@@ -89,13 +89,11 @@ class Itinerarypage extends Component {
 
     
     render() {
-      console.log(this.props.user)
-      console.log(this.props.itineraries.map(itn => itn._id))
       
      if(this.props.user !== undefined) {
       this.props.user.favourites.forEach(fav => this.state.liked.push(fav.itineraryId))
       } 
-      console.log(this.state.liked)
+      
       const pStyle = {
         margin: 10
       }  
@@ -105,9 +103,12 @@ class Itinerarypage extends Component {
     
       const text = this.state.liked ? 'liked' : 'haven\'t liked';
       
-      const label = this.state.liked === this.props.itineraries.map(itn => itn._id) ? <FavoriteIcon color="primary" /> : <FavoriteBorder color="primary" />
       const itineraries = this.props.itineraries.map((itinerary, index) => {
+      let label = <FavoriteIcon color="primary" />
       
+      if(this.state.liked.includes(itinerary._id)){
+      label = <FavoriteIcon color="primary" />} else {label = <FavoriteBorder color="primary" />}
+
       return (
       <Card key={index}>
         <Card.Body>
@@ -136,7 +137,7 @@ class Itinerarypage extends Component {
           <Accordion defaultActiveKey="0">
             <Card>
               <Card.Header>
-                <Accordion.Toggle as={Button} onClick={() => this.handleClick(itinerary._id)} variant="link"  eventKey="1">
+                <Accordion.Toggle id="activitiesBtn" as={Button} onClick={() => this.handleClick(itinerary._id)} variant="link"  eventKey="1">
                   Activities
                 </Accordion.Toggle>
               </Card.Header>
@@ -146,7 +147,7 @@ class Itinerarypage extends Component {
                   </Card.Body>
                 </Accordion.Collapse>
             </Card>
-              <Accordion.Toggle as={Button} onClick={() => this.handleClick(itinerary._id)} variant="link"  eventKey="1">
+              <Accordion.Toggle id="closeBtn" as={Button} onClick={() => this.handleClick(itinerary._id)} variant="link"  eventKey="1">
                 Close
               </Accordion.Toggle>
           </Accordion>

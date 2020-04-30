@@ -111,3 +111,13 @@ a:active {
 #logout {
   color: white;
 }
+
+#activitiesBtn {
+  color: black;
+  margin-left: 35%
+}
+
+#closeBtn {
+  color: black;
+  margin-left: 40%;
+}
