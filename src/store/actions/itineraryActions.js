@@ -1,4 +1,6 @@
-import { FETCH_ITINERARIES } from './types';
+import { FETCH_ITINERARIES, FETCH_COMMENTS, CREATE_COMMENT, DELETE_COMMENT } from './types';
+import axios from "axios";
+import setToken from "../../utilities/setToken";
 
 export const fetchItineraries = (id) => dispatch =>  {
 
@@ -12,3 +14,86 @@ export const fetchItineraries = (id) => dispatch =>  {
             }) 
         )
 };
+
+/* export const fetchComments = (body, itinerary) => async dispatch => {
+  
+    if(localStorage.token) {
+    setToken(localStorage.token)
+    }
+    const token = localStorage.token;
+    
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        "Authorization": `bearer ${token}`
+      }
+    };
+    
+  
+  try {
+    const res = await axios.get(`http://localhost:5000/activities/${itinerary}/comments`, body, config)
+    console.log(res)
+    dispatch({
+      type: FETCH_COMMENTS,
+      payload: res.data
+    })
+  } catch (err) {
+    console.log(err.message)
+  }
+  };
+
+  export const postComment = (body) => async dispatch => {
+  
+    if(localStorage.token) {
+    setToken(localStorage.token)
+    }
+    const token = localStorage.token;
+    
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        "Authorization": `bearer ${token}`
+      }
+    };
+    
+  
+  try {
+    const res = await axios.post(`http://localhost:5000/activities/itinerary/comments`, body, config)
+    console.log(res)
+    dispatch({
+      type: CREATE_COMMENT,
+      payload: res.data
+    })
+  } catch (err) {
+    console.log(err.message)
+  }
+  };
+
+  export const deleteComment = (body, comment) => async dispatch => {
+  
+    if(localStorage.token) {
+    setToken(localStorage.token)
+    }
+    const token = localStorage.token;
+    
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        "Authorization": `bearer ${token}`
+      }
+    };
+    
+  
+  try {
+    const res = await axios.delete(`http://localhost:5000/activities/itinerary/comments/${comment}`, body, config)
+    
+    dispatch({
+      type: DELETE_COMMENT,
+      payload: res.data
+    })
+  } catch (err) {
+    console.log(err.message)
+  }
+  }; */
+ 
+  

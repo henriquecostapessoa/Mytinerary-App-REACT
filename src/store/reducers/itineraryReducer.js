@@ -1,4 +1,4 @@
-import { FETCH_ITINERARIES } from '../actions/types';
+import { FETCH_ITINERARIES} from '../actions/types';
 
 const initialState = {
     items: [],

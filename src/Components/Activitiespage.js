@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { fetchActivities } from '../store/actions/activitiesActions';
 import { connect } from 'react-redux';
 import { Carousel, Card} from 'react-bootstrap';
+import CommentForm from './CommentForm';
+import Comments from './Comments';
 
 class Activitiespage extends Component {
     constructor(props) {
@@ -95,8 +97,10 @@ class Activitiespage extends Component {
                         Comments
                         </label><br></br>
                         <input type="text" placeholder="Your comment..." ref={(input) => this.input = input} />
-                        <input type="submit" value="Submit" />   
+                        <input type="submit" value="Submit" /> 
                     </form>
+                    {/* <CommentForm/> */}
+                    
                 </div> 
             </div>
 

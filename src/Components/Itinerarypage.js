@@ -8,6 +8,8 @@ import { Button, Accordion, Image, Card } from 'react-bootstrap';
 import Activitiespage from './Activitiespage';
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
+import { fetchComments } from '../store/actions/commentsActions';
+import { postComment } from '../store/actions/commentsActions';
 
 
 class Itinerarypage extends Component {
@@ -87,8 +89,10 @@ class Itinerarypage extends Component {
         this.props.deletefavorite (deletefavorite)
     }
 
-    
+
     render() {
+
+      console.log(this.props.fetchComments())
       
      if(this.props.user !== undefined) {
       this.props.user.favourites.forEach(fav => this.state.liked.push(fav.itineraryId))
@@ -197,9 +201,9 @@ class Itinerarypage extends Component {
 
 const mapStateToProps = state => ({
     itineraries: state.itineraries.items,
-    user: state.login.user
+    user: state.login.user,
+    
 })
 
 
-
-export default connect(mapStateToProps, {fetchItineraries, deletefavorite, addfavorite})(Itinerarypage)
+export default connect(mapStateToProps, {fetchItineraries, deletefavorite, addfavorite, fetchComments, postComment})(Itinerarypage)
