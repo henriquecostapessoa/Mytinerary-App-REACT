@@ -88,7 +88,7 @@ const mapStateToProps = (state) => {
         comments: state.comments,
     }
 }
-/* const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
     return {
         fetchComments: (itinerary) => dispatch(fetchComments(itinerary)),
         deleteComment: (comment) => dispatch(deleteComment(comment)),
@@ -97,4 +97,4 @@ const mapStateToProps = (state) => {
         
 }
 
-export default connect (mapStateToProps, mapDispatchToProps) (Comments); */
+export default connect (mapStateToProps, mapDispatchToProps) (Comments);

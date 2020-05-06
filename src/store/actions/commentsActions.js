@@ -38,7 +38,7 @@ export const fetchComments = (itinerary) => {
 
     console.log("about get comments from the backend with fetch", itinerary)
 
-        return function (dispatch, getState) {
+        return function (dispatch) {
 
             dispatch({type: REQUEST_COMMENTS})
 

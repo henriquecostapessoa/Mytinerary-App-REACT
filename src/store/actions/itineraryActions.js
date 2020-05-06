@@ -1,6 +1,4 @@
-import { FETCH_ITINERARIES, FETCH_COMMENTS, CREATE_COMMENT, DELETE_COMMENT } from './types';
-import axios from "axios";
-import setToken from "../../utilities/setToken";
+import { FETCH_ITINERARIES } from './types';
 
 export const fetchItineraries = (id) => dispatch =>  {
 

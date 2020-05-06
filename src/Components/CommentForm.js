@@ -5,7 +5,6 @@ import {postComment} from '../store/actions/commentsActions';
 import {fetchComments} from '../store/actions/commentsActions';
 
 
-
 class CommentForm extends Component {
 
     constructor(props){
@@ -16,9 +15,9 @@ class CommentForm extends Component {
     }
 
     componentDidMount(){
-        const {itinerary} = this.props
+        //const {itinerary} = this.props
 
-        console.log(this.props)
+        //console.log(this.props)
 
         // let date = new Date ();
         
@@ -34,19 +33,24 @@ class CommentForm extends Component {
         e.preventDefault();
 
         const {user} = this.props
-
-        const {itinerary} = this.props;
         
-        const itineraryId = itinerary._id;
+        const {itineraries} = this.props;
 
-        const author = user.id;
-
+        const {activities} = this.props
+        
+        console.log(this.props)
+        const author = user._id;
+        
         const {body} = this.state;
 
         let date = new Date();
-
-        console.log(date)
-
+        
+        for(var i = 0; i < itineraries.length; i++){
+            var xpto = itineraries[i]._id
+            if(activities[0].itineraryId === xpto ){
+                var itineraryId = xpto
+            }
+        }
         const newComment = {
             author,
             itineraryId,
@@ -55,13 +59,16 @@ class CommentForm extends Component {
         }
 
         console.log(newComment)
-        
+        console.log(itineraryId)
+    
         // Attempt to post a new comment
         await this.props.postComment(newComment);
 
 
-        await this.props.fetchComments(itinerary);
-        return
+        /* if(await this.props.fetchComments(itineraries)){
+            this.props.itineraries.push().comments
+        };  */
+        
     }
 
 
@@ -71,8 +78,8 @@ class CommentForm extends Component {
                 <Form onSubmit={(e) => this.onSubmit(e)}>
                     <FormGroup className='formContainer'>
                         <Label for="exampleText">Do you want to share your experience?</Label>
-                        <Input type="textarea" name="body" id="body" placeholder="Your text" onChange={this.onChange}/>
-                        <Button color="info" size="lg">Submit</Button>
+                        <Input type="textarea" name="body" id="body" placeholder="Your text" onChange={this.onChange}/><br></br>
+                        <Button color="secondary" size="lg">Submit</Button>
                     </FormGroup>    
                 </Form>      
             </div>
@@ -80,18 +87,17 @@ class CommentForm extends Component {
     }
 }
 
-const mapStatetoProps = (state) => {
-    return {
-        error:state.error,
-        auth: state.auth
-    }
-}
+const mapStateToProps = state => ({
+    itineraries: state.itineraries.items,
+    user: state.login.user,
+    activities: state.activities.items
+})
 
-/* const mapDispatchtoProps = (dispatch) => {
+const mapDispatchtoProps = (dispatch) => {
     return {
         postComment : (newComment) => dispatch(postComment(newComment)),
         fetchComments: (itinerary) => dispatch(fetchComments(itinerary))
     }
 }
 
-export default  connect (mapStatetoProps, mapDispatchtoProps) (CommentForm); */
+export default  connect (mapStateToProps, mapDispatchtoProps) (CommentForm); 
