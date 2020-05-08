@@ -9,5 +9,3 @@ import commentsReducer from "./commentsReducer";
 const rootReducer = combineReducers({login: loginReducer, cities: citiesReducer, itineraries: itineraryReducer, activities: activityReducer, users: userReducer, comments: commentsReducer });
 
 export default rootReducer;
-
-

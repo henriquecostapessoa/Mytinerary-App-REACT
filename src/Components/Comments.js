@@ -9,21 +9,19 @@ class Comments extends Component {
         comments: []
     }
 
-    async componentDidMount(){
+    componentDidMount(){
 
     const {itineraries} = this.props;
 
     const {itinerary} = this.props;
 
-    /* const {activities} = this.props; */
+    const {activities} = this.props; 
 
     /* console.log(activities) */
 
     
-    /* this.props.fetchComments(itineraries[0]._id)
+    /* this.props.fetchComments(itineraries[0]._id) */
      
-    
-    console.log(itineraries[0]._id) */
 
     };
 
@@ -58,7 +56,6 @@ class Comments extends Component {
 
     getComments = () => {
 
-    console.log(this.props.comments)
 
         let commentsList = this.state.comments.map((comment) => {
             return (
@@ -91,8 +88,7 @@ class Comments extends Component {
 
 
     render() {
-        console.log(this.props.activities)
-        console.log(this.props.comments)
+        
         
         return (
             <div className="commentsList">

@@ -10,85 +10,77 @@ class CommentForm extends Component {
     constructor(props){
         super(props);
         this.state = {
-            body: '',
+            text: '',
+            itineraryId: "",
+            author:"",
+            date:"",
+            username: "",
+            img:"",
+            id:""
+            
         };
     }
 
-    componentDidMount(){
-        //const {itinerary} = this.props
-
-        //console.log(this.props)
-
-        // let date = new Date ();
+    componentWillMount() {
         
-        // console.log(date)
+        this.props.fetchComments(this.props.myid)
     }
 
     onChange = (e) => {
         this.setState({[e.target.name]: e.target.value});
     };
 
-    async onSubmit (e) {
+    onSubmit (e) {
 
-        e.preventDefault();
+        this.setState({
+            id: this.props.idcomment
+        })
 
-        const {user} = this.props
-        
-        const {itineraries} = this.props;
+        /* e.preventDefault(); */
 
-        const {itinerary} = this.props;
+        /* const {itineraries} = this.props;
 
-        const {activities} = this.props
-        
-        console.log(this.props)
-        const author = user._id;
-        
-        const {body} = this.state;
+        const {activities} = this.props;
 
-        let date = new Date();
-        
         for(var i = 0; i < itineraries.length; i++){
             var xpto = itineraries[i]._id
             if(activities[0].itineraryId === xpto ){
-                var itineraryId = xpto
+                var id = activities[0].itineraryId
             }
-        }
-        const newComment = {
-            author,
-            itineraryId,
-            body,
-            date
         }
 
-        console.log(newComment)
-        for( i = 0; i < itineraries.length; i++){
-            xpto = itineraries[i]._id
-            if(activities[0].itineraryId === xpto ){
-                this.props.itineraries[i].comments.push(newComment)
-            }
-        }
         
-        console.log(this.props)
+            
+            const itineraryId = id, */
+            const text = this.state.text
+            const id = this.state.id
+          console.log(text)
+          console.log(this.props.idcomment)
+          
+          this.props.postComment(id, text);
+          
+        this.props.history.push("/itinerary")
+        /* console.log(newComment) */
     
         // Attempt to post a new comment
-        await this.props.postComment(newComment);
+        
 
         
-        await this.props.fetchComments(itinerary)
-        return 
+        /* await this.props.fetchComments(id)
+        return  */
         
     }
 
 
     render() {
-        
+        console.log(this.props)
         return (
 
             <div>
                 <Form onSubmit={(e) => this.onSubmit(e)}>
                     <FormGroup className='formContainer'>
                         <Label for="exampleText">Do you want to share your experience?</Label>
-                        <Input type="textarea" name="body" id="body" placeholder="Your text" onChange={this.onChange}/><br></br>
+                        <Input type="textarea" name="text" id="text" placeholder="Your text" onChange={this.onChange}/><br></br>
                         <Button color="secondary" size="lg">Submit</Button>
                     </FormGroup>    
                 </Form>      
@@ -98,6 +90,7 @@ class CommentForm extends Component {
 }
 
 const mapStateToProps = state => ({
+    comments: state,
     itineraries: state.itineraries.items,
     user: state.login.user,
     activities: state.activities.items
@@ -106,7 +99,7 @@ const mapStateToProps = state => ({
 const mapDispatchtoProps = (dispatch) => {
     return {
         postComment : (newComment) => dispatch(postComment(newComment)),
-        fetchComments: (itinerary) => dispatch(fetchComments(itinerary))
+        fetchComments: (id) => dispatch(fetchComments(id))
     }
 }
 

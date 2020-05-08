@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Carousel, Card} from 'react-bootstrap';
 import CommentForm from './CommentForm';
 import Comments from './Comments';
+import {fetchComments} from '../store/actions/commentsActions';
 
 class Activitiespage extends Component {
     constructor(props) {
@@ -17,11 +18,12 @@ class Activitiespage extends Component {
 
     componentWillMount() {
         this.props.fetchActivities(this.props.myid)
+        this.props.fetchComments(this.props.myid)
     }
 
 
-
     render() {
+        console.log(this.props)
         let myCar = null;
             if (this.props.activities.length > 0) {
             myCar = (
@@ -93,7 +95,7 @@ class Activitiespage extends Component {
                 </div><br></br>
                 <div>
                     
-                    {<CommentForm/>}
+                    {<CommentForm idcomment={this.props.myid}/>}
                     {<Comments/>} 
                 </div> 
             </div>
@@ -103,7 +105,8 @@ class Activitiespage extends Component {
 }
 
 const mapStateToProps = state => ({
-    activities: state.activities.items
+    activities: state.activities.items,
+    comments: state
 })
 
-export default connect(mapStateToProps, {fetchActivities})(Activitiespage)
+export default connect(mapStateToProps, {fetchActivities, fetchComments})(Activitiespage)

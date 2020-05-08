@@ -8,8 +8,9 @@ import Citiespage from './Components/Citiespage';
 import Itinerarypage from './Components/Itinerarypage';
 import Activitiespage from './Components/Activitiespage';
 
-
 function App() {
+  
+
   return (
     
     <BrowserRouter>
