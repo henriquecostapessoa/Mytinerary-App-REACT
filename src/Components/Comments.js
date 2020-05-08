@@ -5,18 +5,36 @@ import {deleteComment} from '../store/actions/commentsActions';
 import {Card, CardBody, CardTitle}from 'reactstrap' ;
 
 class Comments extends Component {
+    state = {
+        comments: []
+    }
 
-    componentDidMount(){
+    async componentDidMount(){
+
+    const {itineraries} = this.props;
 
     const {itinerary} = this.props;
 
-    console.log(itinerary._id)
+    /* const {activities} = this.props; */
 
-    this.props.fetchComments(itinerary._id)
+    /* console.log(activities) */
+
     
-    console.log(this.props.comments)
+    /* this.props.fetchComments(itineraries[0]._id)
+     
+    
+    console.log(itineraries[0]._id) */
 
     };
+
+    /* fetchComments2(itinerary) {
+        fetch(`http://localhost:5000/activities/${itinerary}/comments`)
+        .then((response) => response.json())
+        .then(CommentsList => {
+            this.setState({ comments: CommentsList });
+        });
+        
+    } */
 
     deleteComment = (_id) => {
 
@@ -42,18 +60,18 @@ class Comments extends Component {
 
     console.log(this.props.comments)
 
-        let commentsList = this.props.comments.map(comment => {
+        let commentsList = this.state.comments.map((comment) => {
             return (
-                <Card key={comment._id}>
+                <Card key={comment._id} >
                     <CardBody className="mainContainer">
                         <div className="userContainer">
-                            <img className="avatar" src={comment.user.img} alt="user avatar profile" />
-                            <CardTitle className="userData"><strong>{comment.user.userName + ' '}</strong>({ comment.user.country})</CardTitle>
+                            <img className="avatar" src={comment.user.picture}  alt="user avatar profile" />
+                            <CardTitle className="userData"><strong>{comment.user.username + ' '}</strong></CardTitle>
                         </div>
                         <div className="commentContainer">
                             {/* {comment.body} */}
                             <div>
-                            <small className="text-muted">Comment posted by {comment.user.userName} on {comment.date}</small>
+                            <small className="text-muted">Comment posted by {comment.user.username} on {comment.date}</small>
                             </div>
                         </div>
                         {/* <h5 onClick={this.deleteComment.bind(this)}>Delete</h5> */}
@@ -73,6 +91,9 @@ class Comments extends Component {
 
 
     render() {
+        console.log(this.props.activities)
+        console.log(this.props.comments)
+        
         return (
             <div className="commentsList">
                 <h5>Comments({this.getCommentsNumber()})</h5>
@@ -86,6 +107,9 @@ class Comments extends Component {
 const mapStateToProps = (state) => {
     return {
         comments: state.comments,
+        itineraries: state.itineraries.items,
+        user: state.login.user,
+        activities: state.activities.items
     }
 }
 const mapDispatchToProps = (dispatch) => {

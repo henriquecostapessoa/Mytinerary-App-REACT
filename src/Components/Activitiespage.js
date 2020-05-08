@@ -94,7 +94,7 @@ class Activitiespage extends Component {
                 <div>
                     
                     {<CommentForm/>}
-                    
+                    {<Comments/>} 
                 </div> 
             </div>
 

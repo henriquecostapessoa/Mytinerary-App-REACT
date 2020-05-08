@@ -10,7 +10,7 @@ const initialState = {
 };
 
 export default function reducer (state = initialState, action){
-    console.log("from redicer", action, FETCH_COMMENTS, FETCH_COMMENTS == action.type)
+    console.log("from reducer", action, FETCH_COMMENTS, FETCH_COMMENTS === action.type)
     switch(action.type){
         case REQUEST_COMMENTS:
             return {
@@ -58,8 +58,8 @@ export default function reducer (state = initialState, action){
                 ...state,
                 comments: state.comments.filter(comment => comment._id !== action.payload)
             }
-            default:
-                return state
+        default:
+            return state
     }
 
 }

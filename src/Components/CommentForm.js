@@ -36,6 +36,8 @@ class CommentForm extends Component {
         
         const {itineraries} = this.props;
 
+        const {itinerary} = this.props;
+
         const {activities} = this.props
         
         console.log(this.props)
@@ -59,21 +61,29 @@ class CommentForm extends Component {
         }
 
         console.log(newComment)
-        console.log(itineraryId)
+        for( i = 0; i < itineraries.length; i++){
+            xpto = itineraries[i]._id
+            if(activities[0].itineraryId === xpto ){
+                this.props.itineraries[i].comments.push(newComment)
+            }
+        }
+        
+        console.log(this.props)
     
         // Attempt to post a new comment
         await this.props.postComment(newComment);
 
-
-        /* if(await this.props.fetchComments(itineraries)){
-            this.props.itineraries.push().comments
-        };  */
+        
+        await this.props.fetchComments(itinerary)
+        return 
         
     }
 
 
     render() {
+        
         return (
+
             <div>
                 <Form onSubmit={(e) => this.onSubmit(e)}>
                     <FormGroup className='formContainer'>
