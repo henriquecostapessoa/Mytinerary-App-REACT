@@ -52,14 +52,14 @@ class CommentForm extends Component {
         
             
             const itineraryId = id, */
-            const text = this.state.text
+            /* const text = this.state.text
             const id = this.state.id
           console.log(text)
-          console.log(this.props.idcomment)
+          console.log(this.props.idcomment) */
           
-          this.props.postComment(id, text);
+          this.props.postComment("5e5684cd34d5fe0a3ce7e7d5", "text");
           
-        this.props.history.push("/itinerary")
+        /* this.props.history.push("/citiespage") */
         /* console.log(newComment) */
     
         // Attempt to post a new comment

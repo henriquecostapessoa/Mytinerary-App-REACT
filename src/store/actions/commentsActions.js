@@ -98,8 +98,9 @@ console.log(id)
     
 
   try {
+      console.log("teste")
     const res = await axios.post(`http://localhost:5000/activities/itinerary/comments/add/${id}`, text, config)
-    console.log(res.data)
+    console.log(res)
     /* dispatch({
       type: CREATE_COMMENT,
       payload: res.data

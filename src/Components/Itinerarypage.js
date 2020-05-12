@@ -30,6 +30,7 @@ class Itinerarypage extends Component {
 
 
       componentDidMount() {
+        this.setState({cityId: this.props.location.state.city._id})
         this.props.fetchItineraries(this.props.location.state.city._id)
     }
 
@@ -89,7 +90,7 @@ class Itinerarypage extends Component {
 
 
     render() {
-
+      console.log(this.state.cityId)
       
      if(this.props.user !== undefined) {
       this.props.user.favourites.forEach(fav => this.state.liked.push(fav.itineraryId))
@@ -157,14 +158,14 @@ class Itinerarypage extends Component {
       
       )
       })
-
-      const city = this.props.location.state.city 
+      console.log(this.props.location)
+      /* const city = this.props.location.state.city */ 
         
         return (
         
             <div>
               
-               <Card className="bg-dark text-white" >
+               {/* <Card className="bg-dark text-white" >
                   <Card.Img src={city.image} alt="Card image" style={{width: 358, height: 225}} />
                   <Card.ImgOverlay>
                     <Card.Title id="cityName">
@@ -174,7 +175,7 @@ class Itinerarypage extends Component {
                     </Card.Title>
                 
                   </Card.ImgOverlay>
-                </Card><br></br> 
+                </Card><br></br>  */}
                 <p>Available MYtineraries:</p>
                {itineraries}<br></br>
                <Link style={{
