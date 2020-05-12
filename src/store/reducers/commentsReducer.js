@@ -2,8 +2,6 @@ import { REQUEST_COMMENTS, FETCH_COMMENTS, FAILURE_FETCHING_COMMENTS, GET_USER, 
 
 const initialState = {
     items: [],
-    error: '',
-    user: {},
     item: {}
 };
 

@@ -9,21 +9,10 @@ class Comments extends Component {
         comments: []
     }
 
-    componentDidMount(){
-
-    const {itineraries} = this.props;
-
-    const {itinerary} = this.props;
-
-    const {activities} = this.props; 
-
-    /* console.log(activities) */
-
-    
-    /* this.props.fetchComments(itineraries[0]._id) */
-     
-
-    };
+    componentDidMount() {
+        console.log(this.props.idcomment)
+        this.props.fetchComments(this.props.idcomment)
+    }
 
     /* fetchComments2(itinerary) {
         fetch(`http://localhost:5000/activities/${itinerary}/comments`)
@@ -54,21 +43,32 @@ class Comments extends Component {
         
     } 
 
-    getComments = () => {
+
+        /* if(commentsList.length === 0){
+            commentsList =(
+                <p>No comments added yet</p>
+            )
+        }
+        return commentsList  */
+    
 
 
-        let commentsList = this.state.comments.map((comment) => {
+    render() {
+        /* console.log(this.props.comments) */
+        console.log(this.props)
+        let commentsList;
+        if(this.props.comments.length > 0) {commentsList = this.props.comments.map((comment) => {
             return (
                 <Card key={comment._id} >
                     <CardBody className="mainContainer">
                         <div className="userContainer">
-                            <img className="avatar" src={comment.user.picture}  alt="user avatar profile" />
-                            <CardTitle className="userData"><strong>{comment.user.username + ' '}</strong></CardTitle>
+                            <img className="avatar" src={comment.img}  alt="user avatar profile" />
+                            <CardTitle className="userData"><strong>{comment.username + ' '}</strong></CardTitle>
                         </div>
                         <div className="commentContainer">
                             {/* {comment.body} */}
                             <div>
-                            <small className="text-muted">Comment posted by {comment.user.username} on {comment.date}</small>
+                            <small className="text-muted">Comment posted by {comment.username} on {comment.date}</small>
                             </div>
                         </div>
                         {/* <h5 onClick={this.deleteComment.bind(this)}>Delete</h5> */}
@@ -76,24 +76,12 @@ class Comments extends Component {
                 </Card>
             )
             
-        })
-
-        if(commentsList.length === 0){
-            commentsList =(
-                <p>No comments added yet</p>
-            )
-        }
-        return commentsList 
-    }
-
-
-    render() {
-        
+        })}
         
         return (
             <div className="commentsList">
-                <h5>Comments({this.getCommentsNumber()})</h5>
-                {this.getComments()}
+                <h5>Comments{/* ({this.getCommentsNumber()}) */}</h5>
+                 {commentsList}
             </div>
         )
     };
@@ -102,15 +90,15 @@ class Comments extends Component {
 }
 const mapStateToProps = (state) => {
     return {
-        comments: state.comments,
         itineraries: state.itineraries.items,
         user: state.login.user,
-        activities: state.activities.items
+        activities: state.activities.items,
+        comments: state.comments.items
     }
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchComments: (itinerary) => dispatch(fetchComments(itinerary)),
+        fetchComments: (id) => dispatch(fetchComments(id)),
         deleteComment: (comment) => dispatch(deleteComment(comment)),
         
     }

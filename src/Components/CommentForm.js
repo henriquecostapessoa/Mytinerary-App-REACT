@@ -21,9 +21,9 @@ class CommentForm extends Component {
         };
     }
 
-    componentWillMount() {
+    componentDidMount() {
         
-        this.props.fetchComments(this.props.myid)
+        this.props.fetchComments(this.props.idcomment)
     }
 
     onChange = (e) => {
@@ -73,7 +73,7 @@ class CommentForm extends Component {
 
 
     render() {
-        console.log(this.props)
+        
         return (
 
             <div>
@@ -90,7 +90,7 @@ class CommentForm extends Component {
 }
 
 const mapStateToProps = state => ({
-    comments: state,
+    comments: state.comments.items,
     itineraries: state.itineraries.items,
     user: state.login.user,
     activities: state.activities.items
@@ -98,7 +98,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchtoProps = (dispatch) => {
     return {
-        postComment : (newComment) => dispatch(postComment(newComment)),
+        postComment : (id, text) => dispatch(postComment(id, text)),
         fetchComments: (id) => dispatch(fetchComments(id))
     }
 }

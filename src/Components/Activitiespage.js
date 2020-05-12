@@ -6,6 +6,8 @@ import CommentForm from './CommentForm';
 import Comments from './Comments';
 import {fetchComments} from '../store/actions/commentsActions';
 
+
+
 class Activitiespage extends Component {
     constructor(props) {
         super(props);
@@ -16,14 +18,14 @@ class Activitiespage extends Component {
         };
       }
 
-    componentWillMount() {
+    componentDidMount() {
         this.props.fetchActivities(this.props.myid)
-        this.props.fetchComments(this.props.myid)
+        /* this.props.fetchComments(this.props.myid) */
     }
 
 
     render() {
-        console.log(this.props)
+        
         let myCar = null;
             if (this.props.activities.length > 0) {
             myCar = (
@@ -95,8 +97,9 @@ class Activitiespage extends Component {
                 </div><br></br>
                 <div>
                     
-                    {<CommentForm idcomment={this.props.myid}/>}
-                    {<Comments/>} 
+                    <CommentForm idcomment={this.props.myid}/>
+                    <Comments idcomment={this.props.myid}/> 
+                    
                 </div> 
             </div>
 
@@ -108,5 +111,7 @@ const mapStateToProps = state => ({
     activities: state.activities.items,
     comments: state
 })
+
+
 
 export default connect(mapStateToProps, {fetchActivities, fetchComments})(Activitiespage)
