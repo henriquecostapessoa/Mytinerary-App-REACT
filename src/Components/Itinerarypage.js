@@ -8,6 +8,8 @@ import { Button, Accordion, Image, Card } from 'react-bootstrap';
 import Activitiespage from './Activitiespage';
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
+import CommentForm from './CommentForm';
+import Comments from './Comments';
 
 
 class Itinerarypage extends Component {
@@ -30,8 +32,14 @@ class Itinerarypage extends Component {
 
 
       componentDidMount() {
-        this.setState({cityId: this.props.location.state.city._id})
+        
+        if(this.props.location.state !== undefined){
+          this.setState({cityId: this.props.location.state.city._id})
         this.props.fetchItineraries(this.props.location.state.city._id)
+        } else {
+          this.setState({cityId: this.props.itineraries[0].cityId})
+        this.props.fetchItineraries(this.props.itineraries[0].cityId)
+        }
     }
 
     handleClick(myId) {
@@ -90,7 +98,7 @@ class Itinerarypage extends Component {
 
 
     render() {
-      console.log(this.state.cityId)
+      
       
      if(this.props.user !== undefined) {
       this.props.user.favourites.forEach(fav => this.state.liked.push(fav.itineraryId))
@@ -145,10 +153,11 @@ class Itinerarypage extends Component {
               </Card.Header>
                 <Accordion.Collapse eventKey="1">
                   <Card.Body>
-                    {this.state.id === itinerary._id && <Activitiespage myid={itinerary._id}/>}
+                    {this.state.id === itinerary._id && <Activitiespage myid={itinerary._id}/> && <Comments idcomment={itinerary._id}/>}
+                    <CommentForm itinerary={itinerary}/>
+                    
                   </Card.Body>
                 </Accordion.Collapse>
-            
               <Accordion.Toggle id="closeBtn" as={Button} onClick={() => this.handleClick(itinerary._id)} variant="link"  eventKey="1">
                 Close
               </Accordion.Toggle>
@@ -158,14 +167,14 @@ class Itinerarypage extends Component {
       
       )
       })
-      console.log(this.props.location)
-      /* const city = this.props.location.state.city */ 
-        
+      
+      const city = this.props.location.state.city 
+      
         return (
         
             <div>
               
-               {/* <Card className="bg-dark text-white" >
+               <Card className="bg-dark text-white" >
                   <Card.Img src={city.image} alt="Card image" style={{width: 358, height: 225}} />
                   <Card.ImgOverlay>
                     <Card.Title id="cityName">
@@ -175,7 +184,7 @@ class Itinerarypage extends Component {
                     </Card.Title>
                 
                   </Card.ImgOverlay>
-                </Card><br></br>  */}
+                </Card><br></br> 
                 <p>Available MYtineraries:</p>
                {itineraries}<br></br>
                <Link style={{

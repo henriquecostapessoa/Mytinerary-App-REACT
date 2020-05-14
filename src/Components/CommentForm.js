@@ -16,7 +16,8 @@ class CommentForm extends Component {
             date:"",
             username: "",
             img:"",
-            id:""
+            id:"",
+            modal: false
             
         };
     }
@@ -25,65 +26,38 @@ class CommentForm extends Component {
         
         this.props.fetchComments(this.props.idcomment)
     }
-
-    onChange = (e) => {
-        this.setState({[e.target.name]: e.target.value});
-    };
-
-    onSubmit (e) {
-
-        this.setState({
-            id: this.props.idcomment
-        })
-
-        /* e.preventDefault(); */
-
-        /* const {itineraries} = this.props;
-
-        const {activities} = this.props;
-
-        for(var i = 0; i < itineraries.length; i++){
-            var xpto = itineraries[i]._id
-            if(activities[0].itineraryId === xpto ){
-                var id = activities[0].itineraryId
-            }
-        }
-
-        
-            
-            const itineraryId = id, */
-            /* const text = this.state.text
-            const id = this.state.id
-          console.log(text)
-          console.log(this.props.idcomment) */
-          
-          this.props.postComment("5e5684cd34d5fe0a3ce7e7d5", "text");
-          
-        /* this.props.history.push("/citiespage") */
-        /* console.log(newComment) */
     
-        // Attempt to post a new comment
-        
-
-        
-        /* await this.props.fetchComments(id)
-        return  */
-        
-    }
-
+    toggle = () => {
+        this.setState({
+          modal: !this.state.modal,
+        });
+      };
+      onChange = (e) => {
+        this.setState({
+          text: e.target.value,
+        });
+        console.log(this.state.text)
+      };
+      onSubmit = (id) => {
+        const text = this.state.text;
+        console.log("message: ", text);
+        this.props.postComment(text, id);
+      
+      };
 
     render() {
-        
+        const itinerary = this.props.itinerary
         return (
 
             <div>
-                <Form onSubmit={(e) => this.onSubmit(e)}>
+                <Form onClick={() => this.onSubmit(itinerary._id)}>
                     <FormGroup className='formContainer'>
                         <Label for="exampleText">Do you want to share your experience?</Label>
-                        <Input type="textarea" name="text" id="text" placeholder="Your text" onChange={this.onChange}/><br></br>
-                        <Button color="secondary" size="lg">Submit</Button>
+                        <Input type="textarea" name="text"
+                    id="comments" placeholder="Your text" onChange={this.onChange}/><br></br>
+                        <Button color="secondary" size="lg" onClick={this.toggle}>Submit</Button>
                     </FormGroup>    
-                </Form>      
+                </Form>  
             </div>
         )
     }

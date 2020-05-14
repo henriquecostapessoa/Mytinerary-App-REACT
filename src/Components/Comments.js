@@ -10,18 +10,11 @@ class Comments extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props.idcomment)
+
+        console.log(this.props)
         this.props.fetchComments(this.props.idcomment)
     }
 
-    /* fetchComments2(itinerary) {
-        fetch(`http://localhost:5000/activities/${itinerary}/comments`)
-        .then((response) => response.json())
-        .then(CommentsList => {
-            this.setState({ comments: CommentsList });
-        });
-        
-    } */
 
     deleteComment = (_id) => {
 
@@ -31,7 +24,14 @@ class Comments extends Component {
 
         let id = comment.id
 
-        this.props.deleteComment(id);
+        if(this.props.comments.length > 0 && this.props.comments !== undefined){
+            for(var i = 0; i < this.props.comments.length; i++){ 
+            if(this.props.user._id === this.props.comments[i].author){
+                return this.props.deleteComment(id)
+            } else {return "You can´t delete this comment!"}
+        } 
+    }
+
         // console.log(comment)
     }
 
@@ -51,11 +51,21 @@ class Comments extends Component {
         }
         return commentsList  */
     
-
+        
 
     render() {
-        /* console.log(this.props.comments) */
         console.log(this.props)
+        let label;
+        if(this.props.comments.length > 0 && this.props.comments !== undefined){
+            for(var i = 0; i < this.props.comments.length; i++){ 
+            if(this.props.user._id === this.props.comments[i].author){
+                label = "Delete"
+            } else {label = ""}
+        }} 
+        
+        console.log(this.props.user._id)
+        console.log(this.props.comments)
+        
         let commentsList;
         if(this.props.comments.length > 0) {commentsList = this.props.comments.map((comment) => {
             return (
@@ -65,13 +75,15 @@ class Comments extends Component {
                             <img className="avatar" src={comment.img}  alt="user avatar profile" />
                             <CardTitle className="userData"><strong>{comment.username + ' '}</strong></CardTitle>
                         </div>
+                        <div>
+                            <p>{comment.text}</p>
+                        </div>
                         <div className="commentContainer">
-                            {/* {comment.body} */}
                             <div>
                             <small className="text-muted">Comment posted by {comment.username} on {comment.date}</small>
                             </div>
                         </div>
-                        {/* <h5 onClick={this.deleteComment.bind(this)}>Delete</h5> */}
+                        <h5 onClick={this.deleteComment.bind(this)}>{label}</h5>
                     </CardBody>
                 </Card>
             )
@@ -80,7 +92,7 @@ class Comments extends Component {
         
         return (
             <div className="commentsList">
-                <h5>Comments{/* ({this.getCommentsNumber()}) */}</h5>
+                <h5>Comments({this.getCommentsNumber()})</h5>
                  {commentsList}
             </div>
         )

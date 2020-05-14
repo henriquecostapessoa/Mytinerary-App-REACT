@@ -79,10 +79,11 @@ export const fetchComments = (id) => dispatch =>  {
  */
 // ACTION TO POST A NEW COMMENT
 
-export const postComment = (id, text) => async dispatch => {
+export const postComment = (text, id) => async dispatch => {
   
     const body = JSON.stringify({text})
 console.log(id)
+console.log(body)
     if(localStorage.token) {
     setToken(localStorage.token)
     }
@@ -99,12 +100,12 @@ console.log(id)
 
   try {
       console.log("teste")
-    const res = await axios.post(`http://localhost:5000/activities/itinerary/comments/add/${id}`, text, config)
-    console.log(res)
-    /* dispatch({
+    const res = await axios.post(`http://localhost:5000/activities/itinerary/comments/add/${id}`, body, config)
+    console.log(res.data)
+     dispatch({
       type: CREATE_COMMENT,
       payload: res.data
-    }) */
+    }) 
   } catch (err) {
     console.log(err.message)
   }
@@ -140,9 +141,21 @@ export const deleteComment = comment => async(dispatch) => {
 
     console.log("about to delete comment:", comment)
 
+    if(localStorage.token) {
+        setToken(localStorage.token)
+        }
+        const token = localStorage.token;
+        
+        const config = {
+          headers: {
+            'Content-Type': 'application/json',
+            "Authorization": `bearer ${token}`
+          }
+        };
+
     // Delete request to API
 
-    return await axios.delete(`http://localhost:5000/activities/itinerary/comments/${comment}`, tokenConfig())
+    return await axios.delete(`http://localhost:5000/activities/itinerary/comments/${comment}`, config)
 
     .then(comment => dispatch({
         type: DELETE_COMMENT,

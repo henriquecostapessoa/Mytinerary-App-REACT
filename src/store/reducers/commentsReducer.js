@@ -14,7 +14,7 @@ export default function reducer (state = initialState, action){
                 
             }
         case FETCH_COMMENTS:
-            
+           
             return {
                 ...state,
                 items: action.payload,
