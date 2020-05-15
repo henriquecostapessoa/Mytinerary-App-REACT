@@ -157,9 +157,9 @@ export const deleteComment = id => async(dispatch) => {
 
     await axios.delete(`http://localhost:5000/activities/itinerary/comments/${id}`, config)
 
-    .then(comment => dispatch({
+    .then(res => dispatch({
         type: DELETE_COMMENT,
-        payload: comment
+        payload: res.data
         }))
 
     .catch(err =>

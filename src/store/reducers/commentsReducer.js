@@ -49,7 +49,7 @@ export default function reducer (state = initialState, action){
             
             return{
                 ...state,
-                comments: state.comments.filter(comment => comment._id !== action.payload)
+                comments: action.payload
             }
         default:
             return state
