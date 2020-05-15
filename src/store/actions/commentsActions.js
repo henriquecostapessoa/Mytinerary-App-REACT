@@ -137,9 +137,9 @@ console.log(body)
 
 // ACTION TO DELETE A COMMENT
 
-export const deleteComment = comment => async(dispatch) => {
+export const deleteComment = id => async(dispatch) => {
 
-    console.log("about to delete comment:", comment)
+    console.log("about to delete comment:", id)
 
     if(localStorage.token) {
         setToken(localStorage.token)
@@ -155,7 +155,7 @@ export const deleteComment = comment => async(dispatch) => {
 
     // Delete request to API
 
-    return await axios.delete(`http://localhost:5000/activities/itinerary/comments/${comment}`, config)
+    await axios.delete(`http://localhost:5000/activities/itinerary/comments/${id}`, config)
 
     .then(comment => dispatch({
         type: DELETE_COMMENT,

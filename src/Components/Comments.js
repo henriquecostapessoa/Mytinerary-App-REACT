@@ -16,21 +16,12 @@ class Comments extends Component {
     }
 
 
-    deleteComment = (_id) => {
-
-        let comment = this.props.comments.map(comment => {
-            return (comment)
+    deleteComment = () => {
+console.log("delete")
+        this.props.comments.map(comment => {
+            console.log(comment._id)
+            this.props.deleteComment(comment._id)
         })
-
-        let id = comment.id
-
-        if(this.props.comments.length > 0 && this.props.comments !== undefined){
-            for(var i = 0; i < this.props.comments.length; i++){ 
-            if(this.props.user._id === this.props.comments[i].author){
-                return this.props.deleteComment(id)
-            } else {return "You can´t delete this comment!"}
-        } 
-    }
 
         // console.log(comment)
     }
@@ -54,17 +45,10 @@ class Comments extends Component {
         
 
     render() {
-        console.log(this.props)
-        let label;
-        if(this.props.comments.length > 0 && this.props.comments !== undefined){
-            for(var i = 0; i < this.props.comments.length; i++){ 
-            if(this.props.user._id === this.props.comments[i].author){
-                label = "Delete"
-            } else {label = ""}
-        }} 
+        
         
         console.log(this.props.user._id)
-        console.log(this.props.comments)
+        
         
         let commentsList;
         if(this.props.comments.length > 0) {commentsList = this.props.comments.map((comment) => {
@@ -83,7 +67,9 @@ class Comments extends Component {
                             <small className="text-muted">Comment posted by {comment.username} on {comment.date}</small>
                             </div>
                         </div>
-                        <h5 onClick={this.deleteComment.bind(this)}>{label}</h5>
+                        {(comment.author === this.props.user._id) ? 
+                        <h5 id="labelHeader" onClick={this.deleteComment.bind(this)}>Delete</h5> : console.log("no")}
+                        
                     </CardBody>
                 </Card>
             )
