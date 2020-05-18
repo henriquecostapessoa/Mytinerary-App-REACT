@@ -153,7 +153,7 @@ class Itinerarypage extends Component {
               </Card.Header>
                 <Accordion.Collapse eventKey="1">
                   <Card.Body>
-                    {this.state.id === itinerary._id && <Activitiespage myid={itinerary._id}/> && <Comments idcomment={itinerary._id}/>}
+                    {this.state.id === itinerary._id && <Activitiespage myid={itinerary._id}/> && <Comments idcomment={itinerary._id} /* idpost={} *//>}
                     <CommentForm itinerary={itinerary}/>
                     
                   </Card.Body>

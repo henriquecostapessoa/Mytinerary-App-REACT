@@ -3,10 +3,12 @@ import { connect } from 'react-redux';
 import {fetchComments} from '../store/actions/commentsActions';
 import {deleteComment} from '../store/actions/commentsActions';
 import {Card, CardBody, CardTitle}from 'reactstrap' ;
+import {updateComment} from '../store/actions/commentsActions';
 
 class Comments extends Component {
     state = {
-        comments: []
+        comments: [],
+        text:""
     }
 
     componentDidMount() {
@@ -15,13 +17,30 @@ class Comments extends Component {
         this.props.fetchComments(this.props.idcomment)
     }
 
+    onChange = (e) => {
+        this.setState({
+          text: e.target.value,
+        });
+        console.log(this.state.text)
+      };
 
-    deleteComment = () => {
+    updateComment = (id) => {
+        console.log("update")
+        const text = this.state.text;
+                
+                    console.log(id)
+                this.props.updateComment(text, id)
+            
+        
+                // console.log(comment)
+            }
+
+    deleteComment = (id) => {
 console.log("delete")
-        this.props.comments.map(comment => {
-            console.log(comment._id)
-            this.props.deleteComment(comment._id)
-        })
+
+            console.log(id)
+            this.props.deleteComment(id)
+    
 
         // console.log(comment)
     }
@@ -68,8 +87,11 @@ console.log("delete")
                             </div>
                         </div>
                         {(comment.author === this.props.user._id) ? 
-                        <h5 id="labelHeader" onClick={this.deleteComment.bind(this)}>Delete</h5> : console.log("no")}
-                        
+                        <h5 id="labelHeader" onClick={() => this.deleteComment(comment._id)}>Delete</h5> : console.log("no")}
+                        <textarea rows="4" cols="30" name="comment2" form="usrform" defaultValue={comment.text} onChange={this.onChange}>
+                             </textarea>
+                        {(comment.author === this.props.user._id) ?
+                        <h5 id="labelHeader2" onClick={() => this.updateComment(comment._id)}>Update</h5> : console.log("no")}
                     </CardBody>
                 </Card>
             )
@@ -98,6 +120,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         fetchComments: (id) => dispatch(fetchComments(id)),
         deleteComment: (comment) => dispatch(deleteComment(comment)),
+        updateComment : (id, text) => dispatch(updateComment(id, text))
         
     }
         

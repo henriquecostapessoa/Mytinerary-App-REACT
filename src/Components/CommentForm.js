@@ -45,6 +45,7 @@ class CommentForm extends Component {
       
       };
 
+
     render() {
         const itinerary = this.props.itinerary
         return (

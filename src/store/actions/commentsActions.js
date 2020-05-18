@@ -1,4 +1,4 @@
-import { REQUEST_COMMENTS, FETCH_COMMENTS, FAILURE_FETCHING_COMMENTS, CREATE_COMMENT, FAILURE_CREATE_COMMENT, DELETE_COMMENT} from './types';
+import { FETCH_COMMENTS, CREATE_COMMENT, DELETE_COMMENT, UPDATE_COMMENT} from './types';
 import {returnErrors} from './errorActions';
 import axios from 'axios';
 import setToken from "../../utilities/setToken";
@@ -47,36 +47,7 @@ export const fetchComments = (id) => dispatch =>  {
         )
 };
 
-/* export const fetchComments = (id) => {
 
-    console.log("about get comments from the backend with fetch", id)
-
-        return function (dispatch) {
-
-            dispatch({type: REQUEST_COMMENTS})
-
-            axios
-                .get(`http://localhost:5000//itinerary/comments/${id}`, tokenConfig())
-                .then(res => {
-                    console.log(res);
-                         
-                        return dispatch({
-                            type: FETCH_COMMENTS,
-                            payload: res.data,
-                            
-                        })
-                     } )
-            .catch(err => {
-                dispatch(returnErrors(err.response.data, err.response.status, 'FAILURE_FETCHING_COMMENTS'));
-                dispatch({
-                    type: FAILURE_FETCHING_COMMENTS,
-                    error: err.data
-                })
-            })
-
-    }
-};
- */
 // ACTION TO POST A NEW COMMENT
 
 export const postComment = (text, id) => async dispatch => {
@@ -111,29 +82,6 @@ console.log(body)
   }
   };
 
-/* export const postComment = (newComment, id) => async(dispatch) => {
-
-    console.log("about to send the new comment to the backend with fetch", newComment)
-
-    // Request body
-
-    const body = JSON.stringify(newComment);
-
-    // Post request to API
-
-    return await axios.post(`http://localhost:5000//itinerary/comments/${id}`, body, tokenConfig())
-
-        .then(res => dispatch({
-            type: CREATE_COMMENT,
-            payload: res.data
-        }))
-
-        .catch(err => {
-            dispatch({
-                type: FAILURE_CREATE_COMMENT
-            })
-        })
-} */
 
 // ACTION TO DELETE A COMMENT
 
@@ -155,7 +103,7 @@ export const deleteComment = id => async(dispatch) => {
 
     // Delete request to API
 
-    await axios.delete(`http://localhost:5000/activities/itinerary/comments/${id}`, config)
+await axios.delete(`http://localhost:5000/activities/itinerary/comments/${id}`, config)
 
     .then(res => dispatch({
         type: DELETE_COMMENT,
@@ -166,3 +114,36 @@ export const deleteComment = id => async(dispatch) => {
         dispatch(returnErrors(err.response.data, err.response.status))
     );
 };
+
+
+export const updateComment = (text, id) => async dispatch => {
+  
+    const body = JSON.stringify({text})
+console.log(id)
+console.log(body)
+    if(localStorage.token) {
+    setToken(localStorage.token)
+    }
+    const token = localStorage.token;
+    
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        "Authorization": `bearer ${token}`
+      }
+    };
+    
+    
+
+  try {
+      console.log("teste")
+    const res = await axios.patch(`http://localhost:5000/activities/itinerary/comments/update/${id}`, body, config)
+    console.log(res.data)
+     dispatch({
+      type: UPDATE_COMMENT,
+      payload: res.data
+    }) 
+  } catch (err) {
+    console.log(err.message)
+  }
+  };
