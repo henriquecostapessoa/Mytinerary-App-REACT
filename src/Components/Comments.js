@@ -87,11 +87,11 @@ console.log("delete")
                             </div>
                         </div>
                         {(comment.author === this.props.user._id) ? 
-                        <h5 id="labelHeader" onClick={() => this.deleteComment(comment._id)}>Delete</h5> : console.log("no")}
+                        <h5 id="labelHeader" onClick={() => this.deleteComment(comment._id)}>Delete Comment</h5> : console.log("no")}
                         <textarea rows="4" cols="30" name="comment2" form="usrform" defaultValue={comment.text} onChange={this.onChange}>
                              </textarea>
                         {(comment.author === this.props.user._id) ?
-                        <h5 id="labelHeader2" onClick={() => this.updateComment(comment._id)}>Update</h5> : console.log("no")}
+                        <h5 id="labelHeader2" onClick={() => this.updateComment(comment._id)}>Update Comment</h5> : console.log("no")}
                     </CardBody>
                 </Card>
             )
