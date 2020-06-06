@@ -17,7 +17,7 @@ class Activitiespage extends Component {
 
     componentDidMount() {
         this.props.fetchActivities(this.props.myid)
-        /* this.props.fetchComments(this.props.myid) */
+        
     }
 
 

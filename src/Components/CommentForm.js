@@ -36,11 +36,11 @@ class CommentForm extends Component {
         this.setState({
           text: e.target.value,
         });
-        console.log(this.state.text)
+        
       };
       onSubmit = (id) => {
         const text = this.state.text;
-        console.log("message: ", text);
+        
         this.props.postComment(text, id);
       
       };
@@ -55,7 +55,7 @@ class CommentForm extends Component {
                     <FormGroup className='formContainer'>
                         <Label for="exampleText">Do you want to share your experience?</Label>
                         <Input type="textarea" name="text"
-                    id="comments" placeholder="Your text" onChange={this.onChange}/><br></br>
+                            className="comments" placeholder="Your text" onChange={this.onChange}/><br></br>
                         <Button color="secondary" size="lg" onClick={this.toggle}>Submit</Button>
                     </FormGroup>    
                 </Form>  

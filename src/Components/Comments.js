@@ -13,7 +13,6 @@ class Comments extends Component {
 
     componentDidMount() {
 
-        console.log(this.props)
         this.props.fetchComments(this.props.idcomment)
     }
 
@@ -25,24 +24,18 @@ class Comments extends Component {
       };
 
     updateComment = (id) => {
-        console.log("update")
-        const text = this.state.text;
-                
-                    console.log(id)
-                this.props.updateComment(text, id)
-            
         
-                // console.log(comment)
+        const text = this.state.text;
+                           
+        this.props.updateComment(text, id)
+            
+    
             }
 
     deleteComment = (id) => {
-console.log("delete")
 
-            console.log(id)
-            this.props.deleteComment(id)
+        this.props.deleteComment(id)
     
-
-        // console.log(comment)
     }
 
     getCommentsNumber = () => {
@@ -52,21 +45,10 @@ console.log("delete")
         return (commentsNumber)
         
     } 
-
-
-        /* if(commentsList.length === 0){
-            commentsList =(
-                <p>No comments added yet</p>
-            )
-        }
-        return commentsList  */
     
         
 
     render() {
-        
-        
-        console.log(this.props.user._id)
         
         
         let commentsList;
@@ -96,8 +78,11 @@ console.log("delete")
                 </Card>
             )
             
-        })}
+
+        })} else {commentsList =(<p>No comments added yet</p>)}
         
+         
+
         return (
             <div className="commentsList">
                 <h5>Comments({this.getCommentsNumber()})</h5>
