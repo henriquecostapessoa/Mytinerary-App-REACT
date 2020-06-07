@@ -40,6 +40,7 @@ class Itinerarypage extends Component {
           this.setState({cityId: this.props.itineraries[0].cityId})
         this.props.fetchItineraries(this.props.itineraries[0].cityId)
         }
+        
     }
 
     handleClick(myId) {
@@ -110,11 +111,15 @@ class Itinerarypage extends Component {
       const hStyle = {
         marginLeft: 10
       }
-    
-      const text = this.state.liked ? 'liked' : 'haven\'t liked';
+      
       
       const itineraries = this.props.itineraries.map((itinerary, index) => {
       let label = <FavoriteIcon color="primary" />
+
+      let text = 'have';
+
+      if(this.state.liked.includes(itinerary._id)){
+        text = "have"} else {text = "haven´t like"}
       
       if(this.state.liked.includes(itinerary._id)){
       label = <FavoriteIcon color="primary" />} else {label = <FavoriteBorder color="primary" />}
@@ -153,7 +158,8 @@ class Itinerarypage extends Component {
               </Card.Header>
                 <Accordion.Collapse eventKey="1">
                   <Card.Body>
-                    {this.state.id === itinerary._id && <Activitiespage myid={itinerary._id}/> && <Comments idcomment={itinerary._id} /* idpost={} *//>}
+                  <Activitiespage myid={itinerary._id}/>
+                    {this.state.id === itinerary._id && <Comments idcomment={itinerary._id}/>}
                     <CommentForm itinerary={itinerary}/>
                     
                   </Card.Body>

@@ -17,13 +17,13 @@ class Activitiespage extends Component {
 
     componentDidMount() {
         this.props.fetchActivities(this.props.myid)
-        
+        console.log(this.props.myid)
     }
 
 
     render() {
         
-        let myCar = null;
+            let myCar = null
             if (this.props.activities.length > 0) {
             myCar = (
             <Carousel>
@@ -90,6 +90,7 @@ class Activitiespage extends Component {
         return (
             <div>
                 <div className="carousel">
+                    
                     {myCar}
                 </div><br></br>
             </div>
