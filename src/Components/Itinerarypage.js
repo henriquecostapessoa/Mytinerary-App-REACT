@@ -119,7 +119,7 @@ class Itinerarypage extends Component {
       let text = 'have';
 
       if(this.state.liked.includes(itinerary._id)){
-        text = "have"} else {text = "haven´t like"}
+        text = "have like"} else {text = "haven´t like"}
       
       if(this.state.liked.includes(itinerary._id)){
       label = <FavoriteIcon color="primary" />} else {label = <FavoriteBorder color="primary" />}
