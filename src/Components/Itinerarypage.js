@@ -123,7 +123,7 @@ class Itinerarypage extends Component {
       
       if(this.state.liked.includes(itinerary._id)){
       label = <FavoriteIcon color="primary" />} else {label = <FavoriteBorder color="primary" />}
-
+console.log(this.state.id)
       return (
       <Card key={index}>
         <Card.Body>
@@ -158,7 +158,7 @@ class Itinerarypage extends Component {
               </Card.Header>
                 <Accordion.Collapse eventKey="1">
                   <Card.Body>
-                  <Activitiespage myid={itinerary._id}/>
+                  {this.state.id === itinerary._id && <Activitiespage myid={itinerary._id}/>}
                     {this.state.id === itinerary._id && <Comments idcomment={itinerary._id}/>}
                     <CommentForm itinerary={itinerary}/>
                     
