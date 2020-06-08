@@ -158,7 +158,10 @@ console.log(this.state.id)
               </Card.Header>
                 <Accordion.Collapse eventKey="1">
                   <Card.Body>
-                  {this.state.id === itinerary._id && <Activitiespage myid={itinerary._id}/>}
+                    {this.state.id === itinerary._id && <Activitiespage myid={itinerary._id}/>}
+                    <div>
+                      <a href={itinerary.map}>Itinerary Map (click here)</a>
+                    </div><br></br>
                     {this.state.id === itinerary._id && <Comments idcomment={itinerary._id}/>}
                     <CommentForm itinerary={itinerary}/>
                     
