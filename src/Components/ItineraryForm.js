@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import {connect} from "react-redux"
-import { Form, Button, Label, Input } from 'reactstrap';
+import { Form } from 'react-bootstrap';
+import { Input, Label, Button } from 'reactstrap';
+
 import { additinerary } from '../store/actions/itineraryActions';
+import { fetchItineraries } from '../store/actions/itineraryActions';
 
 class ItineraryForm extends Component {
     constructor(props) {
@@ -20,6 +23,11 @@ class ItineraryForm extends Component {
         this.handleClick = this.handleClick.bind(this)
       }
 
+componentDidMount(){
+
+        this.setState({cityid: this.props.itineraries[0].cityId})
+
+}
    
       onChange(e) {
           
@@ -27,9 +35,9 @@ class ItineraryForm extends Component {
           
       }
 
-      handleClick(e, cityid) {
+      handleClick(e) {
         e.preventDefault()
-        
+        const cityid = this.state.cityid
         const title = this.state.title
         const rating = this.state.rating
         const duration = this.state.duration
@@ -52,32 +60,39 @@ class ItineraryForm extends Component {
       }
 
     render() {
+       console.log(this.state.cityid)
         return (
-            <div>
-                <div>
-                <Form.Group onSubmit={this.handleClick}>
-                <Label for="exampleText">Share your Itinerary...</Label>
-                    <Input type="text" value={this.state.title} placeholder="Title" onChange={this.onChange}/>
+
+
+                
+                <Form onSubmit={this.handleClick}>
+                <Label htmlFor="exampleText">Share your Itinerary...</Label>
+                    <Input type="text" name="title" value={this.state.title} placeholder="Title" onChange={this.onChange}></Input>
                     <br />
-                    <Input type="text" value={this.state.rating} placeholder="Rating e.g.: 4/5" onChange={this.onChange}/>
+                    <Input type="text" name="rating" value={this.state.rating} placeholder="Rating e.g.: 4/5" onChange={this.onChange}></Input>
                     <br />
-                    <Input type="text" value={this.state.duration} placeholder="Duration e.g.: 7 days" onChange={this.onChange}/>
+                    <Input type="text" name="duration" value={this.state.duration} placeholder="Duration e.g.: 7 days" onChange={this.onChange}></Input>
                     <br />
-                    <Input type="text" value={this.state.price} placeholder="Price" onChange={this.onChange}/>
+                    <Input type="text" name="price" value={this.state.price} placeholder="Price" onChange={this.onChange}></Input>
                     <br />
-                    <Input type="text" value={this.state.hashtags} placeholder="Hashtags" onChange={this.onChange}/>
+                    <Input type="text" name="hashtags" value={this.state.hashtags} placeholder="Hashtags" onChange={this.onChange}></Input>
                     <br />
-                    <Input type="text" value={this.state.profilepicture} placeholder="Profile Picture" onChange={this.onChange} />
+                    <Input type="text" name="profilepicture" value={this.state.profilepicture} placeholder="Profile Picture" onChange={this.onChange}></Input>
                     <br />
-                    <Input type="text" value={this.state.map} placeholder="Itinerary Map" onChange={this.onChange} />
+                    <Input type="text" name="map" value={this.state.map} placeholder="Itinerary Map" onChange={this.onChange}></Input>
                     <br />
                     <Button variant="secondary">Submit</Button>{' '}
-                </Form.Group>
+                </Form>
                     
-                </div>
-            </div>
+                
+
+            
         )
     }
 }
+const mapStateToProps = state => ({
+    itineraries: state.itineraries.items,
+    
+})
 
-export default connect(additinerary)(ItineraryForm) 
+export default connect(mapStateToProps, {fetchItineraries, additinerary})(ItineraryForm) 
