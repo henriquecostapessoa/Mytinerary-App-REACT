@@ -56,7 +56,7 @@ componentDidMount(){
         }
        
         this.props.additinerary(newItinerary, cityid)
-        
+        this.props.history.push('/citiespage')
       }
 
     render() {
@@ -66,22 +66,22 @@ componentDidMount(){
 
                 
                 <Form onSubmit={this.handleClick}>
-                <Label htmlFor="exampleText">Share your Itinerary...</Label>
-                    <Input type="text" name="title" value={this.state.title} placeholder="Title" onChange={this.onChange}></Input>
+                <Label className="share">Share your Itinerary...</Label>
+                    <Input className="formiti" type="text" name="title" value={this.state.title} placeholder="Title" onChange={this.onChange}></Input>
                     <br />
-                    <Input type="text" name="rating" value={this.state.rating} placeholder="Rating e.g.: 4/5" onChange={this.onChange}></Input>
+                    <Input className="formiti" type="text" name="rating" value={this.state.rating} placeholder="Rating e.g.: 4/5" onChange={this.onChange}></Input>
                     <br />
-                    <Input type="text" name="duration" value={this.state.duration} placeholder="Duration e.g.: 7 days" onChange={this.onChange}></Input>
+                    <Input className="formiti" type="text" name="duration" value={this.state.duration} placeholder="Duration e.g.: 7 days" onChange={this.onChange}></Input>
                     <br />
-                    <Input type="text" name="price" value={this.state.price} placeholder="Price" onChange={this.onChange}></Input>
+                    <Input className="formiti" type="text" name="price" value={this.state.price} placeholder="Price" onChange={this.onChange}></Input>
                     <br />
-                    <Input type="text" name="hashtags" value={this.state.hashtags} placeholder="Hashtags" onChange={this.onChange}></Input>
+                    <Input className="formiti" type="text" name="hashtags" value={this.state.hashtags} placeholder="Hashtags" onChange={this.onChange}></Input>
                     <br />
-                    <Input type="text" name="profilepicture" value={this.state.profilepicture} placeholder="Profile Picture" onChange={this.onChange}></Input>
+                    <Input className="formiti" type="text" name="profilepicture" value={this.state.profilepicture} placeholder="Profile Picture" onChange={this.onChange}></Input>
                     <br />
-                    <Input type="text" name="map" value={this.state.map} placeholder="Itinerary Map" onChange={this.onChange}></Input>
+                    <Input className="formiti" type="text" name="map" value={this.state.map} placeholder="Google Map Locations" onChange={this.onChange}></Input>
                     <br />
-                    <Button variant="secondary">Submit</Button>{' '}
+                    <Button className="SubBtn" variant="secondary">Submit</Button>{' '}
                 </Form>
                     
                 
