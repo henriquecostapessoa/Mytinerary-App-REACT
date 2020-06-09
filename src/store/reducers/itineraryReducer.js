@@ -1,4 +1,4 @@
-import { FETCH_ITINERARIES} from '../actions/types';
+import { FETCH_ITINERARIES, NEW_ITINERARY} from '../actions/types';
 
 const initialState = {
     items: [],
@@ -12,7 +12,14 @@ export default function (state = initialState, action) {
                 ...state,
                 items: action.payload
             }
+        case NEW_ITINERARY:
+            return {
+                ...state,
+                items: action.payload
+                }
+
         default:
             return state;
     }
 };
+

@@ -77,14 +77,14 @@ class Itinerarypage extends Component {
             title: title,
             cityId: cityId
         }
-       console.log(newfavorite)
+       
         this.props.addfavorite (newfavorite) 
         
     }
 
     deleteClick(itinerary) {
     
-        console.log(itinerary)
+      
         const itineraryId = itinerary._id
         const title = itinerary.title
         const cityId = itinerary.cityId
@@ -193,7 +193,10 @@ console.log(this.state.id)
                     </Card.Title>
                 
                   </Card.ImgOverlay>
-                </Card><br></br> 
+                </Card><br></br>
+                <div>
+                <Link to="./ItineraryForm">Add an Itinerary</Link>
+                </div><br></br> 
                 <p>Available MYtineraries:</p>
                {itineraries}<br></br>
                <Link style={{

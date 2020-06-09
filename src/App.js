@@ -7,6 +7,7 @@ import Registrationpage from './Components/Registrationpage';
 import Citiespage from './Components/Citiespage';
 import Itinerarypage from './Components/Itinerarypage';
 import Activitiespage from './Components/Activitiespage';
+import ItineraryForm from './Components/ItineraryForm';
 
 function App() {
   
@@ -22,6 +23,7 @@ function App() {
           <Route path="/citiespage" component={Citiespage}/>
           <Route path="/itinerary" component={Itinerarypage}/>
           <Route path="/activitiespage" component={Activitiespage}/>
+          <Route path="/itineraryform" component={ItineraryForm}/>
         </Switch>
       </div>
     </BrowserRouter>
