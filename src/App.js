@@ -8,6 +8,7 @@ import Citiespage from './Components/Citiespage';
 import Itinerarypage from './Components/Itinerarypage';
 import Activitiespage from './Components/Activitiespage';
 import ItineraryForm from './Components/ItineraryForm';
+import ActivityForm from './Components/ActivityForm';
 
 function App() {
   
@@ -24,6 +25,7 @@ function App() {
           <Route path="/itinerary" component={Itinerarypage}/>
           <Route path="/activitiespage" component={Activitiespage}/>
           <Route path="/itineraryform" component={ItineraryForm}/>
+          <Route path="/activityform" component={ActivityForm}/>
         </Switch>
       </div>
     </BrowserRouter>

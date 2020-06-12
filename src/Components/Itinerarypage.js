@@ -161,6 +161,11 @@ console.log(this.state.id)
                     {this.state.id === itinerary._id && <Activitiespage myid={itinerary._id}/>}
                     <div>
                       <a href={itinerary.map}>Itinerary Map (click here)</a>
+                      <br></br>
+                      <br></br>
+                      <div>
+                      <Link to="./ActivityForm">Add Activities</Link>
+                      </div>
                     </div><br></br>
                     {this.state.id === itinerary._id && <Comments idcomment={itinerary._id}/>}
                     <CommentForm itinerary={itinerary}/>
