@@ -92,6 +92,7 @@ class Activitiespage extends Component {
                 <div className="carousel">
                     
                     {myCar}
+                    
                 </div><br></br>
             </div>
 

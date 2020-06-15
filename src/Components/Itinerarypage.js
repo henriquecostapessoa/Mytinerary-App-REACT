@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { Link } from "react-router-dom"
 import { Button, Accordion, Image, Card } from 'react-bootstrap';
 import Activitiespage from './Activitiespage';
+import ActivityForm from './ActivityForm';
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 import CommentForm from './CommentForm';
@@ -164,7 +165,7 @@ console.log(this.state.id)
                       <br></br>
                       <br></br>
                       <div>
-                      <Link to="./ActivityForm">Add Activities</Link>
+                      {this.state.id === itinerary._id && <ActivityForm myid={itinerary._id}/>}
                       </div>
                     </div><br></br>
                     {this.state.id === itinerary._id && <Comments idcomment={itinerary._id}/>}
@@ -200,7 +201,7 @@ console.log(this.state.id)
                   </Card.ImgOverlay>
                 </Card><br></br>
                 <div>
-                <Link to="./ItineraryForm">Add an Itinerary</Link>
+                <Link to="./ItineraryForm">Add an Itinerary...</Link>
                 </div><br></br> 
                 <p>Available MYtineraries:</p>
                {itineraries}<br></br>
