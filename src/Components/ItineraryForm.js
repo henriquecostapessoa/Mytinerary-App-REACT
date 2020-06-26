@@ -56,7 +56,7 @@ componentDidMount(){
         }
        
         this.props.additinerary(newItinerary, cityid)
-        this.props.history.push('/citiespage')
+        this.props.history.push('/itinerary')
       }
 
     render() {

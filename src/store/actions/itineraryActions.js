@@ -4,6 +4,7 @@ import setToken from "../../utilities/setToken";
 
 export const fetchItineraries = (id) => dispatch =>  {
 
+
     
     fetch(`http://localhost:5000/itineraries/${id}`)
         .then(response => response.json())

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { fetchItineraries } from '../store/actions/itineraryActions';
+import { fetchOneCity } from '../store/actions/cityActions';
 import { deletefavorite } from '../store/actions/loginActions';
 import { addfavorite } from '../store/actions/loginActions';
 import { connect } from 'react-redux';
@@ -37,11 +38,14 @@ class Itinerarypage extends Component {
         if(this.props.location.state !== undefined){
           this.setState({cityId: this.props.location.state.city._id})
         this.props.fetchItineraries(this.props.location.state.city._id)
+      this.props.fetchOneCity(this.props.location.state.city._id)
         } else {
           this.setState({cityId: this.props.itineraries[0].cityId})
-        this.props.fetchItineraries(this.props.itineraries[0].cityId)
+        this.props.fetchItineraries(this.props.city._id)
+        this.props.fetchOneCity(this.props.itineraries[0].cityId)
         }
-        
+
+      
     }
 
     handleClick(myId) {
@@ -100,8 +104,8 @@ class Itinerarypage extends Component {
 
 
     render() {
-      
-      
+    
+      console.log(this.props)
      if(this.props.user !== undefined) {
       this.props.user.favourites.forEach(fav => this.state.liked.push(fav.itineraryId))
       } 
@@ -183,7 +187,7 @@ console.log(this.state.id)
       )
       })
       
-      const city = this.props.location.state.city 
+      const city = this.props.city
       
         return (
         
@@ -226,8 +230,9 @@ console.log(this.state.id)
 
 const mapStateToProps = state => ({
     itineraries: state.itineraries.items,
+    city: state.cities.item,
     user: state.login.user
 })
 
 
-export default connect(mapStateToProps, {fetchItineraries, deletefavorite, addfavorite})(Itinerarypage)
+export default connect(mapStateToProps, {fetchOneCity, fetchItineraries, deletefavorite, addfavorite})(Itinerarypage)

@@ -42,7 +42,7 @@ componentDidMount(myid){
         }
        
         this.props.addactivity(newActivity, itineraryid)
-        
+        this.props.history.push('/itinerary')
       }
 
     render() {

@@ -15,7 +15,7 @@ export default function (state = initialState, action) {
         case NEW_ITINERARY:
             return {
                 ...state,
-                items: action.payload
+                item: action.payload
                 }
 
         default:
